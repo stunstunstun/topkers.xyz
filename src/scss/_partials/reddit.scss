@@ -1,0 +1,28 @@
+.reddit-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+ul.reddit-list {
+  width: 32%;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  li {
+    border: 1px solid rgba(0, 0, 0, 0.0975);
+    background-color: white;
+    padding: 10px 15px;
+  }
+}
+
+.reddit-cover-info {
+  .reddit-cover-title {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+  }
+  .reddit-cover-domain {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 13px;
+  }
+}

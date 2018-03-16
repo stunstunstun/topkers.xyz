@@ -1,0 +1,35 @@
+{
+  "name": "blahblah.tech",
+  "version": "0.1.0",
+  "description": "We can do blahblah about the Programming",
+  "private": false,
+  "scripts": {
+    "sass": "gulp sass",
+    "gulp": "gulp",
+    "start": "gulp & react-scripts start",
+    "build": "npm run sass && react-scripts build",
+    "test": "jest --env=jsdom"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-sass": "^3.1.0",
+    "react-scripts": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stunstunstun/blahblah.tech.git"
+  },
+  "homepage": "http://www.blahblah.tech",
+  "author": "stunstunstun",
+  "license": "MIT"
+}
