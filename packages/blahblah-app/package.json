@@ -1,6 +1,7 @@
 {
   "name": "blahblah-app",
   "version": "0.1.0",
+  "main": "./src/index",
   "scripts": {
     "clean": "rimraf eslint build .cache coverage *.xml *.log",
     "lint": "eslint . --ignore-path .eslintignore",

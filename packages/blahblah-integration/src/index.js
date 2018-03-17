@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { getLogger } from 'log4js'
 
-const logger = getLogger()
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
 
 function createQuery(parameters) {
@@ -24,10 +22,6 @@ function request(endpoint, options) {
         throw new Error(`HTTP reponse is not OK. ${response.status} ${url} ${JSON.stringify(body, null, 2)}`)
       }
       return body
-    })
-    .catch(err => {
-      logger.error(err)
-      return err
     })
 }
 

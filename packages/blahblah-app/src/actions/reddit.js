@@ -1,32 +1,38 @@
+import reddit from 'blahblah-integration'
+
 const REQUEST_POSTS = 'REQUEST_POSTS'
 const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
-function requestPosts(sub, limit, category) {
+function requestPosts(limit, t) {
   return {
     type: REQUEST_POSTS,
-    sub,
     limit,
-    category,
+    t,
   }
 }
 
-function receivePosts(sub, limit, category, json) {
+function receivePosts(limit, t, posts) {
   return {
     type: RECEIVE_POSTS,
-    sub,
     limit,
-    category,
-    posts: json.data.children.map(child => child.data),
+    t,
+    posts: posts.map(child => child.data),
     receivedAt: Date.now(),
   }
 }
 
-function fetchPosts(sub, limit, category) {
+function fetchPosts(limit, t) {
   return async dispatch => {
-    dispatch(requestPosts(sub, limit, category))
-    const response = await fetch(`https://www.reddit.com/r/${sub}/top/.json?limit=${limit}&t=${category}`)
-    const json = await response.json()
-    dispatch(receivePosts(sub, limit, category, json))
+    const options = {
+      method: 'GET',
+      body: {
+        limit,
+        t,
+      },
+    }
+    dispatch(requestPosts(limit, t))
+    const posts = await reddit(options)
+    dispatch(receivePosts(limit, t, posts))
   }
 }
 

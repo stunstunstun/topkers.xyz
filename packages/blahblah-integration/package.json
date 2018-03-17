@@ -1,7 +1,7 @@
 {
   "name": "blahblah-integration",
   "version": "0.1.0",
-  "main": "dist/index.js",
+  "main": "./dist/index",
   "scripts": {
     "clean": "rimraf eslint build .cache coverage checkstyle*.xml *.log",
     "lint": "eslint . --ignore-path .eslintignore",
@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
+  },
+  "engines": {
+    "node": ">=8.9.0"
   },
   "author": "stunstunstun",
   "license": "MIT"

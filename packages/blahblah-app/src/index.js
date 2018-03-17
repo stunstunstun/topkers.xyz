@@ -6,21 +6,18 @@ import configureStore from './store/index'
 import App from './containers/App'
 import './app.css'
 
-const sub = 'programming'
 const limit = 10
 const store = configureStore({
   reddit: {
-    sub,
-    limit,
     today: [],
     week: [],
     month: [],
   },
 })
 
-store.dispatch(fetchPosts(sub, limit, 'today'))
-store.dispatch(fetchPosts(sub, limit, 'week'))
-store.dispatch(fetchPosts(sub, limit, 'month'))
+store.dispatch(fetchPosts(limit, 'today'))
+store.dispatch(fetchPosts(limit, 'week'))
+store.dispatch(fetchPosts(limit, 'month'))
 
 const render = () => {
   const rootElement = document.getElementById('root')
