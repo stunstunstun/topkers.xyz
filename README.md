@@ -35,9 +35,9 @@ Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <8.9.4>
 Now using node v8.9.4 (npm v5.6.0)
 ```
 
-## Yarn Commands
+### Yarn Commands
 
-### Install project
+#### Install project
 
 ```bash
 $ nvm use
@@ -46,16 +46,22 @@ Now using node v8.9.4 (npm v5.6.0)
 $ yarn
 ```
 
-### Workspace info
+#### Workspace info
 
 ```bash
 $ yarn workspaces info
 ```
 
-### Test
+#### Test
 
 ```bash
 $ yarn test
+```
+
+#### Run
+
+```bash
+$ yarn start
 ```
 
 #### Configure hosts
@@ -65,6 +71,15 @@ Hosts must be registered in development.
 `/etc/hosts`
 ```
 127.0.0.1 dev.blahblah.tech
+```
+
+### Continous Integration
+
+This project is testing and generating coverage reports in [Travis CI](https://travis-ci.org/)
+
+```bash
+$ yarn install
+$ yarn coverage:report
 ```
 
 ## License
