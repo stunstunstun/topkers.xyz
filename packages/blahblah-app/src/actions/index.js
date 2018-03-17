@@ -1,5 +1,5 @@
-import * as reddit from './reddit'
+import * as post from './post'
 
 export default {
-  reddit,
+  post,
 }

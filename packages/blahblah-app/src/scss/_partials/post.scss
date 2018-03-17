@@ -1,10 +1,10 @@
-.reddit-container {
+.post-container {
   margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
-ul.reddit-list {
+ul.post-list {
   width: 32%;
   margin: 0px;
   padding: 0px;
@@ -16,12 +16,12 @@ ul.reddit-list {
   }
 }
 
-.reddit-cover-info {
-  .reddit-cover-title {
+.post-cover-info {
+  .post-cover-title {
     color: rgba(0, 0, 0, 0.7);
     font-size: 16px;
   }
-  .reddit-cover-domain {
+  .post-cover-domain {
     color: rgba(0, 0, 0, 0.4);
     font-size: 13px;
   }

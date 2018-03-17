@@ -26,7 +26,8 @@ var reddit = exports.reddit = function () {
           case 2:
             body = _context.sent;
             return _context.abrupt('return', body.data.children.map(function (item) {
-              return new _Post2.default(item.title, item.url, item.domain, item.author);
+              var post = item.data;
+              return new _Post2.default(post.id, post.title, post.url, post.domain, post.author);
             }));
 
           case 4:
@@ -55,7 +56,7 @@ var devblog = exports.devblog = function () {
           case 2:
             body = _context2.sent;
             return _context2.abrupt('return', body.map(function (item) {
-              return new _Post2.default(item.title, item.link, item.description, item.author);
+              return new _Post2.default(item.author, item.title, item.link, item.description, item.author);
             }));
 
           case 4:

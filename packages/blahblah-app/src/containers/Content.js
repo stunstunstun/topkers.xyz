@@ -1,17 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Reddit from '../components/Reddit'
+import Post from '../components/Post'
 
 class Content extends React.Component {
   render() {
     const { today, week, month } = this.props
     return (
       <main className="content">
-        <div className="reddit-container">
-          <Reddit posts={today} />
-          <Reddit posts={week} />
-          <Reddit posts={month} />
+        <div className="post-container">
+          <Post posts={today} />
+          <Post posts={week} />
+          <Post posts={month} />
         </div>
       </main>
     )
@@ -26,9 +26,9 @@ Content.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    today: state.reddit.today,
-    week: state.reddit.week,
-    month: state.reddit.month,
+    today: state.post.today,
+    week: state.post.week,
+    month: state.post.month,
   }
 }
 

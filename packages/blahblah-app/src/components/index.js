@@ -1,3 +1,3 @@
-import Reddit from './Reddit'
+import Post from './Post'
 
-export default Reddit
+export default Post

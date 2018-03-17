@@ -15,6 +15,7 @@ describe('Posts', () => {
     }
     const posts = await reddit(options)
     expect(posts[0] instanceof Post).toBeTruthy()
+    expect(posts[0].id).toBeTruthy()
   })
 
   test('Get resources by Korean devblog', async () => {
@@ -24,5 +25,6 @@ describe('Posts', () => {
     }
     const posts = await devblog(options)
     expect(posts[0] instanceof Post).toBeTruthy()
+    expect(posts[0].id).toBeTruthy()
   })
 })

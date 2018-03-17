@@ -10,9 +10,10 @@ var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Post = function Post(title, link, desc, author) {
+var Post = function Post(id, title, link, desc, author) {
   (0, _classCallCheck3.default)(this, Post);
 
+  this.id = id;
   this.title = title;
   this.link = link;
   this.desc = desc;
