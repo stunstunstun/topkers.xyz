@@ -16,4 +16,4 @@ before_install:
 
 script:
  - yarn install
- - yarn coverage:report
+ - yarn lint && yarn coverage:report

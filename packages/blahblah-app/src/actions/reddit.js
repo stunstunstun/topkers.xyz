@@ -4,18 +4,18 @@ const RECEIVE_POSTS = 'RECEIVE_POSTS'
 function requestPosts(sub, limit, category) {
   return {
     type: REQUEST_POSTS,
-    sub: sub,
-    limit: limit,
-    category: category,
+    sub,
+    limit,
+    category,
   }
 }
 
 function receivePosts(sub, limit, category, json) {
   return {
     type: RECEIVE_POSTS,
-    sub: sub,
-    limit: limit,
-    category: category,
+    sub,
+    limit,
+    category,
     posts: json.data.children.map(child => child.data),
     receivedAt: Date.now(),
   }
@@ -30,4 +30,8 @@ function fetchPosts(sub, limit, category) {
   }
 }
 
-export { REQUEST_POSTS, RECEIVE_POSTS, fetchPosts }
+export {
+  REQUEST_POSTS,
+  RECEIVE_POSTS,
+  fetchPosts,
+}

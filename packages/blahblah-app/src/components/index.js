@@ -1,3 +1,3 @@
 import Reddit from './Reddit'
 
-export { Reddit }
+export default Reddit

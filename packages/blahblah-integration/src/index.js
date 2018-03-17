@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { getLogger } from 'log4js' 
+import { getLogger } from 'log4js'
 
 const logger = getLogger()
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
@@ -14,9 +14,7 @@ function request(endpoint, options) {
   const { method } = options
   let url = endpoint
   if (method === 'GET') {
-    url = url
-      .concat('?')
-      .concat(createQuery(Object.assign({}, options.body)))
+    url = url.concat('?').concat(createQuery(Object.assign({}, options.body)))
     delete options.body
   }
   return fetch(url, options)
