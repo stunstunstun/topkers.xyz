@@ -12,7 +12,7 @@ module.exports = {
   verbose: true,
   useStderr: true,
   collectCoverageFrom: [
-    '**/packages/src/*.{js,jsx}',
+    '**/packages/**/src/**/*.{js,jsx}',
   ],
   coverageDirectory: './coverage/',
 }
