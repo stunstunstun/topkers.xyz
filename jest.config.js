@@ -10,9 +10,9 @@ module.exports = {
   },
   bail: true,
   verbose: true,
+  useStderr: true,
   collectCoverageFrom: [
-    '**/packages/**/*.{js,jsx}',
-    '!**/packages/**/__tests__/**',
+    '**/packages/src/*.{js,jsx}',
   ],
   coverageDirectory: './coverage/',
 }

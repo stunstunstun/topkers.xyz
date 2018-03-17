@@ -1,8 +1,6 @@
 module.exports = {
   cacheDirectory: '.cache/jest',
-  testMatch: [
-    '**/?(*.)(spec|test).{js,jsx}',
-  ],
+  testMatch: ['**/?(*.)(spec|test).{js,jsx}'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.css$': '../../config/jest/cssTransform.js',

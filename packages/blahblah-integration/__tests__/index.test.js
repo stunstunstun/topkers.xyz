@@ -1,8 +1,18 @@
-import sum from '../index'
+import reddit from '../src'
 
-describe('Testing', () => {
-  test('sum a and b', () => {
+describe('Reddit', () => {
+  test('Get resources about the Programming', async () => {
     expect.hasAssertions()
-    expect(sum(1, 1)).toBe(2)
+    const limit = 5
+    const t = 'week'
+    const options = {
+      method: 'GET',
+      body: {
+        limit,
+        t,
+      },
+    }
+    const posts = await reddit(options)
+    expect(posts.length).toBe(limit)
   })
 })

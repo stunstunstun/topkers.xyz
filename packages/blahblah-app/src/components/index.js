@@ -1,5 +1,3 @@
 import Reddit from './Reddit'
 
-export {
-  Reddit
-};
+export { Reddit }

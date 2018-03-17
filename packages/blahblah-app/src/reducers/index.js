@@ -1,6 +1,6 @@
-import reddit from "./reddit";
-import { combineReducers } from "redux";
+import reddit from './reddit'
+import { combineReducers } from 'redux'
 
 export default combineReducers({
-  reddit
-});
+  reddit,
+})

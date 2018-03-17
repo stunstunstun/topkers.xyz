@@ -8,7 +8,8 @@
     "coverage": "yarn test --no-cache --runInBand --coverage",
     "coverage:report": "yarn coverage && codecov",
     "build": "lerna exec yarn build",
-    "start": "lerna exec --scope blahblah-app yarn start"
+    "start": "lerna exec --scope blahblah-app yarn start",
+    "format": "prettier --write 'packages/**/*.js'"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -19,6 +20,7 @@
     "gulp-sass": "^3.1.0",
     "lerna": "^2.8.0",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.11.1",
     "react-scripts": "^1.1.1"
   },
   "repository": {
@@ -33,5 +35,8 @@
   },
   "homepage": "http://www.blahblah.tech",
   "author": "stunstunstun",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "log4js": "^2.5.3"
+  }
 }

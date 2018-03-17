@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "babel index.js -d dist --presets env"
+    "build": "babel src -d dist --presets env"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
