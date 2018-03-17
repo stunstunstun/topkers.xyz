@@ -5,15 +5,13 @@ function reddit(state = {}, action) {
     case REQUEST_POSTS:
       return {
         ...state,
-        sub: action.sub,
         limit: action.limit,
       }
     case RECEIVE_POSTS:
       return {
         ...state,
-        sub: action.sub,
         limit: action.limit,
-        [action.category]: action.posts,
+        [action.t]: action.posts,
       }
     default:
       return state

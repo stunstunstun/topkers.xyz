@@ -11,12 +11,10 @@
     "coverage": "yarn test --no-cache --runInBand --coverage",
     "coverage:report": "yarn coverage && codecov",
     "build": "lerna run build --parallel",
+    "build:integration": "lerna exec --scope blahblah-integration yarn build",
     "start": "lerna exec --scope blahblah-app yarn start",
     "format": "prettier --write 'packages/**/*.js'",
     "precommit": "lerna run precommit"
-  },
-  "dependencies": {
-    "log4js": "^2.5.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
