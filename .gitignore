@@ -5,5 +5,6 @@
 node_modules/
 build/
 coverage/
+gh_token
 *.tgz
 *.log
