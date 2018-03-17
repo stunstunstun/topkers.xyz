@@ -1,7 +1,8 @@
-import reddit from '../src'
+import Post, { reddit, devblog } from '../src'
 
-describe('Reddit', () => {
-  test('Get resources about the Programming', async () => {
+
+describe('Posts', () => {
+  test('Get resources by Reddit', async () => {
     expect.hasAssertions()
     const limit = 5
     const t = 'week'
@@ -13,6 +14,15 @@ describe('Reddit', () => {
       },
     }
     const posts = await reddit(options)
-    expect(posts.length).toBe(limit)
+    expect(posts[0] instanceof Post).toBeTruthy()
+  })
+
+  test('Get resources by Korean devblog', async () => {
+    expect.hasAssertions()
+    const options = {
+      method: 'GET',
+    }
+    const posts = await devblog(options)
+    expect(posts[0] instanceof Post).toBeTruthy()
   })
 })

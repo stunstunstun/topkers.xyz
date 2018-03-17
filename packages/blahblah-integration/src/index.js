@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
+import Post from './Post'
 
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
+const devblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
 
 function createQuery(parameters) {
   return Object.keys(parameters)
@@ -25,7 +27,14 @@ function request(endpoint, options) {
     })
 }
 
-export default async function reddit(options) {
+export async function reddit(options) {
   const body = await request(redditEndpoint, options)
-  return body.data.children
+  return body.data.children.map(item => new Post(item.title, item.url, item.domain, item.author))
 }
+
+export async function devblog(options) {
+  const body = await request(devblogEndpoint, options)
+  return body.map(item => new Post(item.title, item.link, item.description, item.author))
+}
+
+export default Post
