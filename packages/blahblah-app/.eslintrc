@@ -15,7 +15,7 @@
     "arrow-parens": ["error", "as-needed"],
     "semi": ["error", "never"],
     "object-curly-newline": ["error", {
-      "ObjectExpression": "always",
+      "ObjectExpression": { "multiline": true, "minProperties": 1 },
       "ObjectPattern": { "multiline": true },
       "ImportDeclaration": "never",
       "ExportDeclaration": { "multiline": true, "minProperties": 3 }

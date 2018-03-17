@@ -15,6 +15,9 @@
     "format": "prettier --write 'packages/**/*.js'",
     "precommit": "lerna run precommit"
   },
+  "dependencies": {
+    "log4js": "^2.5.3"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -36,20 +39,23 @@
     "react-scripts": "^1.1.1",
     "rimraf": "^2.6.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/blah-blah-tech/blahblah.tech.git"
-  },
   "workspaces": [
     "packages/*"
   ],
   "engines": {
     "node": ">=8.9.4"
   },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blah-blah-tech/blahblah.tech.git"
+  },
   "homepage": "http://www.blahblah.tech",
   "author": "stunstunstun",
-  "license": "MIT",
-  "dependencies": {
-    "log4js": "^2.5.3"
-  }
+  "license": "MIT"
 }

@@ -13,8 +13,7 @@ gulp.task(
         }),
       )
       .pipe(autoprefixer())
-      .pipe(gulp.dest('./src')),
-  ),
+      .pipe(gulp.dest('./src'))),
 )
 
 gulp.task(

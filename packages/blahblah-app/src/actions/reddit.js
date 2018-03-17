@@ -30,4 +30,8 @@ function fetchPosts(sub, limit, category) {
   }
 }
 
-export { REQUEST_POSTS, RECEIVE_POSTS, fetchPosts }
+export {
+  REQUEST_POSTS,
+  RECEIVE_POSTS,
+  fetchPosts,
+}

@@ -24,12 +24,6 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/blah-blah-tech/blahblah.tech.git"
