@@ -5,17 +5,17 @@ class Header extends React.Component {
     return (
       <header className="header">
         <nav className="navigation">
-          <a className="navigation-logo">
+          <a href="/" className="navigation-logo">
             <img src="images/logo.png" alt="logo" />
           </a>
           <div className="navigation-links">
-            <a className="navigation-link">
+            <a href="/" className="navigation-link">
               <i className="fa fa-compass" />
             </a>
-            <a className="navigation-link">
+            <a href="/" className="navigation-link">
               <i className="fa fa-heart-o" />
             </a>
-            <a className="navigation-link">
+            <a href="/" className="navigation-link">
               <i className="fa fa-user-o" />
             </a>
           </div>

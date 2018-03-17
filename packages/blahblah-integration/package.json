@@ -3,11 +3,23 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rimraf eslint build .cache coverage checkstyle*.xml *.log",
+    "lint": "eslint . --ignore-path .eslintignore",
+    "lint:html": "eslint . --ignore-path .eslintignore -f html -o eslint/index.html",
+    "lint:checkstyle": "eslint . --ignore-path .eslintignore -f checkstyle > checkstyle-result.xml",
+    "lint:report": "yarn clean && yarn lint:html && yarn lint:checkstyle",
     "test": "jest",
-    "build": "babel src -d dist --presets env"
+    "build": "babel src -d dist --presets env",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "author": "stunstunstun",
   "license": "MIT"

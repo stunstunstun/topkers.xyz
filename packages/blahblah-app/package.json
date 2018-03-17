@@ -2,11 +2,17 @@
   "name": "blahblah-app",
   "version": "0.1.0",
   "scripts": {
+    "clean": "rimraf eslint build .cache coverage *.xml *.log",
+    "lint": "eslint . --ignore-path .eslintignore",
+    "lint:html": "eslint . --ignore-path .eslintignore -f html -o eslint/index.html",
+    "lint:checkstyle": "eslint . --ignore-path .eslintignore -f checkstyle > checkstyle-result.xml",
+    "lint:report": "yarn clean && yarn lint:html && yarn lint:checkstyle",
     "sass": "gulp sass",
     "gulp": "gulp",
     "start": "gulp & react-scripts start",
     "build": "npm run sass && react-scripts build",
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "blahblah-integration": "^0.1.0",
@@ -17,6 +23,12 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
