@@ -3,7 +3,10 @@
 [![build][build-status-badge]][build-status-link]
 [![build][codecov-badge]][codecov-link]
 
-We can do blahblah about the Programming 
+<div align="center">
+  <p>We can do blahblah about the Programming!</p>
+  <h1>🙄&nbsp;🧐&nbsp;🤣&nbsp;🤭</h1>
+</div>
 
 ## Getting Started
 
@@ -14,6 +17,7 @@ Required | Description
 [Git](https://git-scm.com/) | We follow the [GitHub Flow](https://guides.github.com/introduction/flow/)
 [Node.js](nodejs.org) | 8.9.4 LTS
 [Yarn](https://yarnpkg.com/lang/en/) | 1.5.1
+[React](https://reactjs.org/) | 16.2.0
 
 #### Install Node, Yarn
 
