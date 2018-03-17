@@ -5,13 +5,13 @@ import Post from '../components/Post'
 
 class Content extends React.Component {
   render() {
-    const { today, week, month } = this.props
+    const { reddit, devblog, awesomeblog } = this.props
     return (
       <main className="content">
         <div className="post-container">
-          <Post posts={today} />
-          <Post posts={week} />
-          <Post posts={month} />
+          <Post posts={reddit} />
+          <Post posts={devblog} />
+          <Post posts={awesomeblog} />
         </div>
       </main>
     )
@@ -19,16 +19,16 @@ class Content extends React.Component {
 }
 
 Content.propTypes = {
-  today: PropTypes.array.isRequired,
-  week: PropTypes.array.isRequired,
-  month: PropTypes.array.isRequired,
+  reddit: PropTypes.array.isRequired,
+  devblog: PropTypes.array.isRequired,
+  awesomeblog: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    today: state.post.today,
-    week: state.post.week,
-    month: state.post.month,
+    reddit: state.post.reddit,
+    devblog: state.post.devblog,
+    awesomeblog: state.post.awesomeblog,
   }
 }
 

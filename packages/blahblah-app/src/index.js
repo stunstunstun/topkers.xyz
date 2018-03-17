@@ -1,22 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { fetchRedditPosts } from './actions/post'
+import { fetchRedditPosts, fetchDevblogPosts } from './actions/post'
 import configureStore from './store/index'
 import App from './containers/App'
 import './app.css'
 
 const store = configureStore({
   post: {
-    today: [],
-    week: [],
-    month: [],
+    reddit: [],
+    devblog: [],
+    awesomeblog: [],
   },
 })
 
-store.dispatch(fetchRedditPosts('today'))
-store.dispatch(fetchRedditPosts('week'))
-store.dispatch(fetchRedditPosts('month'))
+store.dispatch(fetchRedditPosts('reddit'))
+store.dispatch(fetchDevblogPosts('devblog', 0, 10))
+store.dispatch(fetchDevblogPosts('awesomeblog', 10, 20))
 
 const render = () => {
   const rootElement = document.getElementById('root')

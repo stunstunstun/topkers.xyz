@@ -25,7 +25,7 @@ function fetchRedditPosts(source) {
       method: 'GET',
       body: {
         limit: 10,
-        t: source,
+        t: 'today',
       },
     }
     dispatch(requestPosts(source))
@@ -34,14 +34,10 @@ function fetchRedditPosts(source) {
   }
 }
 
-function fetchDevblogPosts() {
+function fetchDevblogPosts(source, start, end) {
   return async dispatch => {
-    const source = 'devblog'
-    const options = {
-      method: 'GET',
-    }
     dispatch(requestPosts(source))
-    const posts = await devblog(options)
+    const posts = await devblog(start, end)
     dispatch(receivePosts(source, posts))
   }
 }

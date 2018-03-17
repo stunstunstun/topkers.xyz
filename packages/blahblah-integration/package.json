@@ -13,8 +13,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "xml-to-json-promise": "^0.0.3"
+    "isomorphic-fetch": "^2.2.1"
   },
   "engines": {
     "node": ">=8.9.0"

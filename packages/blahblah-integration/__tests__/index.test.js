@@ -1,4 +1,4 @@
-import Post, { reddit, devblog, awesomeblog } from '../src'
+import Post, { reddit, devblog } from '../src'
 
 
 describe('Posts', () => {
@@ -20,23 +20,14 @@ describe('Posts', () => {
 
   test('Get resources by devblog', async () => {
     expect.hasAssertions()
-    const options = {
-      method: 'GET',
-    }
-    const posts = await devblog(options)
+    const posts = await devblog(0, 10)
     expect(posts[0] instanceof Post).toBeTruthy()
     expect(posts[0].id).toBeTruthy()
   })
 
-  test('Get resources by awesomeblog', async () => {
+  test('Get resources by devlog next', async () => {
     expect.hasAssertions()
-    const options = {
-      method: 'GET',
-      body: {
-        group: 'dev',
-      },
-    }
-    const posts = await awesomeblog(options)
+    const posts = await devblog(10, 20)
     expect(posts[0] instanceof Post).toBeTruthy()
     expect(posts[0].id).toBeTruthy()
   })

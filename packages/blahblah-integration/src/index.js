@@ -1,6 +1,4 @@
-import path from 'path'
 import fetch from 'isomorphic-fetch'
-import convert from 'xml-to-json-promise'
 import Post from './Post'
 import feeds from './feeds'
 
@@ -33,27 +31,17 @@ function request(endpoint, options) {
 export async function reddit(options) {
   const response = await request(redditEndpoint, options)
   const body = await response.json()
-  return body
-    .data
+  return body.data
     .children.map(item => {
       const post = item.data
       return new Post(post.id, post.title, post.url, post.domain, post.author)
     })
 }
 
-export async function devblog() {
+export async function devblog(start, end) {
   return feeds
+    .slice(start, end)
     .map(item => new Post(item.author, item.title, item.link, item.description, item.author))
-}
-
-export async function awesomeblog() {
-  const response = await convert.xmlFileToJSON(path.join(__dirname, '/', 'feeds.xml'))
-  const body = response.feed.entry
-  return body
-    .map(item => {
-      const { id, title, author } = item
-      return new Post(id[0], title[0], id[0], author[0].name[0], author[0].name[0])
-    })
 }
 
 export default Post
