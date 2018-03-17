@@ -1,33 +1,35 @@
 {
   "name": "blahblah.tech",
+  "private": true,
   "version": "0.1.0",
   "description": "We can do blahblah about the Programming",
-  "private": false,
   "scripts": {
-    "sass": "gulp sass",
-    "gulp": "gulp",
-    "start": "gulp & react-scripts start",
-    "build": "npm run sass && react-scripts build",
-    "test": "jest --env=jsdom"
-  },
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "test": "jest",
+    "build": "lerna exec --scope blahblah-app yarn build",
+    "start": "lerna exec --scope blahblah-app yarn start"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.0.0-alpha.0",
+    "babel-preset-env": "^1.6.1",
+    "codecov": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-sass": "^3.1.0",
-    "react-scripts": "^1.1.0"
+    "jest": "^22.4.2",
+    "lerna": "^2.9.0",
+    "react-scripts": "^1.1.0",
+    "webpack": "^4.1.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/blah-blah-tech/blahblah.tech.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=8.9.4"
   },
   "homepage": "http://www.blahblah.tech",
   "author": "stunstunstun",
