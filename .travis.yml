@@ -1,0 +1,19 @@
+---
+language: node_js
+node_js:
+  - 8
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+env:
+  global:
+    - PATH=$HOME/.yarn/bin:$PATH
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+
+script:
+ - yarn install
+ - yarn coverage:report

@@ -1,0 +1,14 @@
+{
+  "name": "blahblah-integration",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "babel index.js -d dist --presets env"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "author": "stunstunstun",
+  "license": "MIT"
+}

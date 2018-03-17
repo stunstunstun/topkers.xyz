@@ -5,21 +5,21 @@
   "description": "We can do blahblah about the Programming",
   "scripts": {
     "test": "jest",
-    "build": "lerna exec --scope blahblah-app yarn build",
+    "coverage": "yarn test --no-cache --runInBand --coverage",
+    "coverage:report": "yarn coverage && codecov",
+    "build": "lerna exec yarn build",
     "start": "lerna exec --scope blahblah-app yarn start"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-jest": "^23.0.0-alpha.0",
     "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-sass": "^3.1.0",
-    "jest": "^22.4.2",
-    "lerna": "^2.9.0",
-    "react-scripts": "^1.1.0",
-    "webpack": "^4.1.1"
+    "lerna": "^2.8.0",
+    "npm-run-all": "^4.1.2",
+    "react-scripts": "^1.1.1"
   },
   "repository": {
     "type": "git",
