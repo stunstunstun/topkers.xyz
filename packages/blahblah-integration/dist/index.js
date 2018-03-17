@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.devblog = exports.reddit = undefined;
 
 var _regenerator = require('babel-runtime/regenerator');
 
@@ -12,13 +13,81 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
+var reddit = exports.reddit = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(options) {
+    var response, body;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return request(redditEndpoint, options);
+
+          case 2:
+            response = _context.sent;
+            _context.next = 5;
+            return response.json();
+
+          case 5:
+            body = _context.sent;
+            return _context.abrupt('return', body.data.children.map(function (item) {
+              var post = item.data;
+              return new _Post2.default(post.id, post.title, post.url, post.domain, post.author);
+            }));
+
+          case 7:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function reddit(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var devblog = exports.devblog = function () {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(start, end) {
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            return _context2.abrupt('return', _feeds2.default.slice(start, end).map(function (item) {
+              return new _Post2.default(item.author, item.title, item.link, item.description, item.author);
+            }));
+
+          case 1:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, this);
+  }));
+
+  return function devblog(_x2, _x3) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
 var _isomorphicFetch = require('isomorphic-fetch');
 
 var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
+var _Post = require('./Post');
+
+var _Post2 = _interopRequireDefault(_Post);
+
+var _feeds = require('./feeds');
+
+var _feeds2 = _interopRequireDefault(_feeds);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var redditEndpoint = 'https://www.reddit.com/r/programming/top/.json';
+// const devblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
+// const awesomeblogEndpoint = 'https://awesome-blogs.petabytes.org/feeds'
 
 function createQuery(parameters) {
   return Object.keys(parameters).map(function (key) {
@@ -35,39 +104,11 @@ function request(endpoint, options) {
     delete options.body;
   }
   return (0, _isomorphicFetch2.default)(url, options).then(function (response) {
-    var body = response.json();
     if (response.status >= 400) {
-      throw new Error('HTTP reponse is not OK. ' + response.status + ' ' + url + ' ' + JSON.stringify(body, null, 2));
+      throw new Error('HTTP reponse is not OK. ' + response.status + ' ' + url);
     }
-    return body;
+    return response;
   });
 }
 
-exports.default = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(options) {
-    var body;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return request(redditEndpoint, options);
-
-          case 2:
-            body = _context.sent;
-            return _context.abrupt('return', body.data.children);
-
-          case 4:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  function reddit(_x) {
-    return _ref.apply(this, arguments);
-  }
-
-  return reddit;
-}();
+exports.default = _Post2.default;

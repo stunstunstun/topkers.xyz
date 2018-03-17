@@ -1,23 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { fetchPosts } from './actions/reddit'
+import { fetchRedditPosts, fetchDevblogPosts } from './actions/post'
 import configureStore from './store/index'
 import App from './containers/App'
 import './app.css'
 
-const limit = 10
 const store = configureStore({
-  reddit: {
-    today: [],
-    week: [],
-    month: [],
+  post: {
+    reddit: [],
+    devblog: [],
+    awesomeblog: [],
   },
 })
 
-store.dispatch(fetchPosts(limit, 'today'))
-store.dispatch(fetchPosts(limit, 'week'))
-store.dispatch(fetchPosts(limit, 'month'))
+store.dispatch(fetchRedditPosts('reddit'))
+store.dispatch(fetchDevblogPosts('devblog', 0, 10))
+store.dispatch(fetchDevblogPosts('awesomeblog', 10, 20))
 
 const render = () => {
   const rootElement = document.getElementById('root')

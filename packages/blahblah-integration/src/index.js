@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-fetch'
+import Post from './Post'
+import feeds from './feeds'
 
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
+// const devblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
+// const awesomeblogEndpoint = 'https://awesome-blogs.petabytes.org/feeds'
 
 function createQuery(parameters) {
   return Object.keys(parameters)
@@ -17,15 +21,27 @@ function request(endpoint, options) {
   }
   return fetch(url, options)
     .then(response => {
-      const body = response.json()
       if (response.status >= 400) {
-        throw new Error(`HTTP reponse is not OK. ${response.status} ${url} ${JSON.stringify(body, null, 2)}`)
+        throw new Error(`HTTP reponse is not OK. ${response.status} ${url}`)
       }
-      return body
+      return response
     })
 }
 
-export default async function reddit(options) {
-  const body = await request(redditEndpoint, options)
-  return body.data.children
+export async function reddit(options) {
+  const response = await request(redditEndpoint, options)
+  const body = await response.json()
+  return body.data
+    .children.map(item => {
+      const post = item.data
+      return new Post(post.id, post.title, post.url, post.domain, post.author)
+    })
 }
+
+export async function devblog(start, end) {
+  return feeds
+    .slice(start, end)
+    .map(item => new Post(item.author, item.title, item.link, item.description, item.author))
+}
+
+export default Post
