@@ -1,8 +1,12 @@
 import fetch from 'isomorphic-fetch'
+import cheerio from 'cheerio'
+import moment from 'moment'
 import Post from './Post'
 import feeds from './feeds'
 
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
+const githubRepoEndpoint = 'https://api.github.com/search/repositories'
+const githubTrendingEndpoint = 'https://github.com/trending'
 // const devblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
 // const awesomeblogEndpoint = 'https://awesome-blogs.petabytes.org/feeds'
 
@@ -22,7 +26,7 @@ function request(endpoint, options) {
   return fetch(url, options)
     .then(response => {
       if (response.status >= 400) {
-        throw new Error(`HTTP reponse is not OK. ${response.status} ${url}`)
+        throw new Error(`HTTP/1.1 ${response.status} ${method} ${url}`)
       }
       return response
     })
@@ -36,6 +40,52 @@ export async function reddit(options) {
       const post = item.data
       return new Post(post.id, post.title, post.url, post.domain, post.author)
     })
+}
+
+export async function gitHubRepo(languages) {
+  const aMonthAgo = moment().subtract(30, 'days').format('YYYY-MM-DD')
+  const options = {
+    method: 'GET',
+    body: {
+      q: `language:${languages}+created:%3E${aMonthAgo}`,
+      sort: 'stars',
+      order: 'desc',
+    },
+  }
+  const response = await request(githubRepoEndpoint, options)
+  const body = await response.json()
+  return body.items
+    .map(item => new Post(
+      item.id,
+      item.full_name,
+      item.html_url,
+      item.language,
+      `🤩 ${item.stargazers_count}`,
+    ))
+}
+
+export async function githubTrending() {
+  const options = {
+    method: 'GET',
+    body: {
+      since: 'weekly',
+    },
+  }
+  const response = await request(githubTrendingEndpoint, options)
+  const body = await response.text()
+  const $ = cheerio.load(body)
+  const repos = $('li', '.explore-content ol.repo-list')
+  return repos.map((index, repo) => {
+    const repoNode = $(repo)
+    const name = repoNode.find('h3 a').text().trim()
+    const desc = repoNode.find('.py-1 p').text().trim()
+    const stars = repoNode.find('a svg.octicon-star').parent().text()
+      .replace('Star', '🤩')
+      .replace(/\n/g, '')
+      .trim()
+    const url = `https://github.com${repoNode.find('h3 a').attr('href')}`
+    return new Post(name, name, url, desc, stars)
+  }).get()
 }
 
 export async function devblog(start, end) {

@@ -5,13 +5,13 @@ import Post from '../components/Post'
 
 class Content extends React.Component {
   render() {
-    const { reddit, devblog, awesomeblog } = this.props
+    const { devblog, reddit, github } = this.props
     return (
       <main className="content">
         <div className="post-container">
-          <Post posts={reddit} />
           <Post posts={devblog} />
-          <Post posts={awesomeblog} />
+          <Post posts={reddit} />
+          <Post posts={github} />
         </div>
       </main>
     )
@@ -19,16 +19,16 @@ class Content extends React.Component {
 }
 
 Content.propTypes = {
-  reddit: PropTypes.array.isRequired,
   devblog: PropTypes.array.isRequired,
-  awesomeblog: PropTypes.array.isRequired,
+  reddit: PropTypes.array.isRequired,
+  github: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    reddit: state.post.reddit,
     devblog: state.post.devblog,
-    awesomeblog: state.post.awesomeblog,
+    reddit: state.post.reddit,
+    github: state.post.github,
   }
 }
 
