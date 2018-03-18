@@ -13,7 +13,9 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
+    "cheerio": "^1.0.0-rc.2",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.21.0"
   },
   "engines": {
     "node": ">=8.9.0"
