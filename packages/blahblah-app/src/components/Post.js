@@ -11,7 +11,7 @@ export default class Post extends React.Component {
             <a href={post.link} target="_blank" className="post-cover">
               <div className="post-cover-info">
                 <strong className="post-cover-title">{post.title}</strong>
-                <p className="post-cover-domain">{post.desc}</p>
+                <p className="post-cover-domain">{post.author}</p>
               </div>
             </a>
           </li>
