@@ -10,6 +10,7 @@ ul.post-list {
   padding: 0px;
   list-style-type: none;
   li {
+    margin: 6px;
     border: 1px solid rgba(0, 0, 0, 0.0975);
     background-color: white;
     padding: 10px 15px;
@@ -19,10 +20,10 @@ ul.post-list {
 .post-cover-info {
   .post-cover-title {
     color: rgba(0, 0, 0, 0.7);
-    font-size: 16px;
+    font-size: 20px;
   }
   .post-cover-domain {
     color: rgba(0, 0, 0, 0.4);
-    font-size: 13px;
+    font-size: 14px;
   }
 }

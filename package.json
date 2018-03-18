@@ -1,7 +1,7 @@
 {
   "name": "blahblah.tech",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "We can do blahblah about the Programming",
   "scripts": {
     "clean": "lerna run clean",
