@@ -2,13 +2,11 @@ import fetch from 'isomorphic-fetch'
 import cheerio from 'cheerio'
 import moment from 'moment'
 import Post from './Post'
-import feeds from './feeds'
 
 const redditEndpoint = 'https://www.reddit.com/r/programming/top/.json'
 const githubRepoEndpoint = 'https://api.github.com/search/repositories'
 const githubTrendingEndpoint = 'https://github.com/trending'
-// const devblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
-// const awesomeblogEndpoint = 'https://awesome-blogs.petabytes.org/feeds'
+const domesticDevblogEndpoint = 'https://awesome-devblog.herokuapp.com/feeds/domestic'
 
 function createQuery(parameters) {
   return Object.keys(parameters)
@@ -89,7 +87,12 @@ export async function githubTrending() {
 }
 
 export async function devblog(start, end) {
-  return feeds
+  const options = {
+    method: 'GET',
+  }
+  const response = await request(domesticDevblogEndpoint, options)
+  const res = await response.json()
+  return res
     .slice(start, end)
     .map(item => new Post(item.author, item.title, item.link, item.description, item.author))
 }

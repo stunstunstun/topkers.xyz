@@ -1,0 +1,12 @@
+{
+  "sourceMaps": true,
+  "presets": [
+    "./.babelrc.js"
+  ],
+  "ignore": ["dist", "node_modules"],
+  "env": {
+    "production": {
+      "ignore": ["__tests__", "dist"]
+    }
+  }
+}

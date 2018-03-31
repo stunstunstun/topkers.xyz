@@ -1,0 +1,11 @@
+{
+  "name": "blahblah-web",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "private": true,
+  "dependencies": {
+    "winston": "^3.0.0-rc2"
+  },
+  "author": "stunstunstun",
+  "license": "MIT"
+}

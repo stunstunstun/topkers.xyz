@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Configure token
+GH_TOKEN=a2591219284bb4379fab010c24c095b038034050
+
 # Build project
 . $HOME/.bash_profile
 nvm use
