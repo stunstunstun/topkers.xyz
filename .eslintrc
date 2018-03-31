@@ -4,27 +4,15 @@
     "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "node": true,
-    "es6": true,
-    "jest": true
-  },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "semi": ["error", "never"],
-    "object-curly-newline": ["error", {
-      "ObjectExpression": { "multiline": true, "minProperties": 1 },
-      "ObjectPattern": { "multiline": true },
-      "ImportDeclaration": "never",
-      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
-    }],
     "function-paren-newline": ["error", "consistent"],
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "off",
     "react/forbid-prop-types": "off",
     "react/no-array-index-key": "off",
+    "react/sort-comp": "off",
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
@@ -37,5 +25,18 @@
       "ForInStatement"
     ],
     "max-len": ["error", { "code": 120 }]
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "location": true,
+    "__DEV__": true
   }
 }

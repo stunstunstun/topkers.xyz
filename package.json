@@ -4,28 +4,40 @@
   "version": "0.1.1",
   "description": "We can do blahblah about the Programming",
   "scripts": {
-    "clean": "lerna run clean",
-    "lint": "lerna run lint",
-    "lint:report": "lerna run lint:report",
-    "test": "jest",
-    "coverage": "yarn test --no-cache --runInBand --coverage",
-    "coverage:report": "yarn coverage && codecov",
-    "build": "lerna run build --parallel",
-    "build:integration": "lerna exec --scope blahblah-integration yarn build",
-    "start": "lerna exec --scope blahblah-app yarn start",
-    "format": "prettier --write 'packages/**/*.js'",
-    "precommit": "lerna run precommit"
+    "batch": "lerna exec --scope blahblah-batch --stream yarn start",
+    "bootstrap": "cross-env NODE_ENV=development npm-run-all -s check-versions lerna:prepublish",
+    "build": "cross-env NODE_ENV=production lerna run build --parallel && gulp",
+    "check-versions": "babel-node scripts/check-versions.js",
+    "clean": "rimraf .cache coverage eslint dist *.log *.xml ./packages/**/*.log ./packages/**/*.xml",
+    "coverage": "npm-run-all -s lint:report 'test --no-cache --runInBand --coverage' codecov",
+    "codecov": "codecov",
+    "lint": "eslint . --ignore-path .eslintignore",
+    "lint:html": "eslint . --ignore-path .eslintignore -f html -o eslint/index.html",
+    "lint:checkstyle": "eslint . --ignore-path .eslintignore -f checkstyle > checkstyle-result.xml",
+    "lint:report": "npm-run-all -p lint:html lint:checkstyle",
+    "lint:fix": "eslint --fix . --ignore-path .eslintignore",
+    "jest": "jest",
+    "lerna": "lerna",
+    "lerna:prepublish": "lerna run prepublish",
+    "prebootstrap": "yarn",
+    "start": "cross-env NODE_ENV=development npm-run-all -p watch start:app",
+    "start:app": "lerna exec --scope blahblah-app --stream yarn start",
+    "serve": "lerna run serve --scope blahblah-app",
+    "test": "jest --forceExit",
+    "watch": "lerna run watch --no-sort --stream --concurrency 999"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
+    "cross-env": "^5.1.4",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "glob": "^7.1.2",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-sass": "^3.1.0",
@@ -33,6 +45,7 @@
     "lerna": "^2.9.0",
     "lint-staged": "^7.0.0",
     "npm-run-all": "^4.1.2",
+    "pm2": "^2.10.2",
     "prettier": "^1.11.1",
     "react-scripts": "^1.1.1",
     "rimraf": "^2.6.2"
@@ -41,7 +54,8 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=8.9.4"
+    "node": "^8.9.4",
+    "yarn": "^1.5.1"
   },
   "lint-staged": {
     "*.js": [

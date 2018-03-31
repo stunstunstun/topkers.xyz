@@ -1,5 +1,9 @@
 node_modules/
 build/
+dist/
+config/
 coverage/
 public/
-gulpfile.js
+website/
+fixtures/
+.out/

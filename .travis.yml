@@ -15,5 +15,5 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
 
 script:
- - yarn install
- - yarn lint && yarn coverage:report
+ - yarn bootstrap
+ - yarn coverage
