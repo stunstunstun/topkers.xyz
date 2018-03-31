@@ -14,10 +14,7 @@ const envVarsSchema = Joi.object({
       then: Joi.boolean().default(true),
       otherwise: Joi.boolean().default(false),
     }),
-  REDDITS: Joi.string().required(),
-  GITHUB_REPOS: Joi.string().required(),
-  GITHUB_TRENDS: Joi.string().required(),
-  BLOGS: Joi.string().required(),
+  MONGO_URI: Joi.string().required(),
 }).unknown().required()
 
 const { error, value: envVars } = Joi.validate(process.env, envVarsSchema)
@@ -29,15 +26,7 @@ const config = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   mongooseDebug: envVars.MONGOOSE_DEBUG,
-  mongo: {
-    uri: envVars.MONGO_URI,
-  },
-  api: {
-    reddits: envVars.REDDITS,
-    githubRepos: envVars.GITHUB_REPOS,
-    githubTrends: envVars.GITHUB_TRENDS,
-    blogs: envVars.BLOGS,
-  },
+  mongoURI: envVars.MONGO_URI,
 }
 
 module.exports = config

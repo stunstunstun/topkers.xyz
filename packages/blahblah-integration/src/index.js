@@ -1,8 +1,8 @@
 import fetch from 'isomorphic-fetch'
 import cheerio from 'cheerio'
 import moment from 'moment'
-import config from 'blahblah-config'
 import Post from './Post'
+import config from './config'
 
 function createQuery(parameters) {
   return Object.keys(parameters)
@@ -46,7 +46,7 @@ export async function gitHubRepo(languages) {
       order: 'desc',
     },
   }
-  const response = await request(config.api.githubRepos, options)
+  const response = await request(config.api.gitHubRepos, options)
   const body = await response.json()
   return body.items
     .map(item => new Post(
@@ -65,7 +65,7 @@ export async function githubTrending() {
       since: 'weekly',
     },
   }
-  const response = await request(config.api.githubTrends, options)
+  const response = await request(config.api.gitHubTrends, options)
   const body = await response.text()
   const $ = cheerio.load(body)
   const repos = $('li', '.explore-content ol.repo-list')

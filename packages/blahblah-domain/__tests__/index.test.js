@@ -1,5 +1,5 @@
-import config from 'blahblah-config'
+import env from '../index'
 
 test('Config', () => {
-  console.log(`Config = ${JSON.stringify(config)}`)
+  expect(env).toBe('test')
 })
