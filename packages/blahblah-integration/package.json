@@ -1,7 +1,7 @@
 {
   "name": "blahblah-integration",
-  "version": "0.1.1",
-  "main": "dist/index",
+  "version": "1.0.0",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --ignore __tests__",
