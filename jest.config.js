@@ -19,8 +19,8 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '__tests__/fixtures'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
-    '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/config/jest/fileTransform.js',
+    '^.+\\.css$': '<rootDir>/config/src/jest/cssTransform.js',
+    '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/config/src/jest/fileTransform.js',
   },
   collectCoverageFrom: ['**/packages/**/src/**/*.{js,jsx}', '!**/dist/**'],
   coverageReporters: ['html', 'clover'],

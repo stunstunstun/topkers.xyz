@@ -1,0 +1,12 @@
+{
+  "name": "config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "joi": "^13.1.2"
+  },
+  "private": true,
+  "author": "stunstunstun",
+  "license": "MIT"
+}

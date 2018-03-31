@@ -1,0 +1,11 @@
+{
+  "name": "blahblah-domain",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "dependencies": {
+    "config": "^1.0.0"
+  },
+  "author": "stunstunstun",
+  "license": "MIT",
+  "private": false
+}
