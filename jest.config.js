@@ -16,13 +16,21 @@ module.exports = {
   setupFiles: ['raf/polyfill.js'],
   setupTestFrameworkScriptFile: './config/__tests__/setupTests.js',
   testMatch: ['**/?(*.)(spec|test).{js,jsx}'],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '__tests__/fixtures'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '__tests__/fixtures',
+  ],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
     '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/config/jest/fileTransform.js',
   },
-  collectCoverageFrom: ['**/packages/**/src/**/*.{js,jsx}', '!**/dist/**'],
+  collectCoverageFrom: [
+    '**/config/**/src/**/*.{js,jsx}',
+    '**/packages/**/src/**/*.{js,jsx}',
+    '!**/dist/**',
+  ],
   coverageReporters: ['html', 'clover'],
   coverageDirectory: './coverage/',
 }

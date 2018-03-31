@@ -1,9 +1,6 @@
 import Post, { reddit, devblog, gitHubRepo, githubTrending } from '../src'
 
 describe('Posts', () => {
-  // eslint-disable-next-line no-undef
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
-
   test('Get resources by Reddit', async () => {
     expect.hasAssertions()
     const limit = 5

@@ -14,8 +14,10 @@ const envVarsSchema = Joi.object({
       then: Joi.boolean().default(true),
       otherwise: Joi.boolean().default(false),
     }),
-  MONGO_URI: Joi.string().required()
-    .description('MongoDB URI'),
+  REDDITS: Joi.string().required(),
+  GITHUB_REPOS: Joi.string().required(),
+  GITHUB_TRENDS: Joi.string().required(),
+  BLOGS: Joi.string().required(),
 }).unknown().required()
 
 const { error, value: envVars } = Joi.validate(process.env, envVarsSchema)
@@ -30,6 +32,12 @@ const config = {
   mongo: {
     uri: envVars.MONGO_URI,
   },
+  api: {
+    reddits: envVars.REDDITS,
+    githubRepos: envVars.GITHUB_REPOS,
+    githubTrends: envVars.GITHUB_TRENDS,
+    blogs: envVars.BLOGS,
+  },
 }
 
-exports.default = config
+module.exports = config
