@@ -5,7 +5,7 @@
 
 <div align="center">
   <p>We can do blahblah about the Programming!</p>
-  <h1>🙄&nbsp;🧐&nbsp;🤣&nbsp;🤭</h1>
+  <h2>🙄&nbsp;🧐&nbsp;🤣&nbsp;🤭</h2>
 </div>
 
 ## Getting Started
@@ -17,9 +17,11 @@ Required | Description
 [Git](https://git-scm.com/) | We follow the [GitHub Flow](https://guides.github.com/introduction/flow/)
 [Node.js](nodejs.org) | 8.9.4 LTS
 [Yarn](https://yarnpkg.com/lang/en/) | 1.5.1
+[Lerna](https://lernajs.io/) | 2.9.0 with Yarn workspaces
 [React](https://reactjs.org/) | 16.2.0
+[MongoDB](https://www.mongodb.com/) | 3.6.3
 
-#### Install Node, Yarn
+### Install Node, Yarn
 
 The project manages the version of node through `nvm`
 
@@ -39,7 +41,7 @@ Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <8.9.4>
 Now using node v8.9.4 (npm v5.6.0)
 ```
 
-### Yarn Commands
+### Yarn CLIs
 
 #### Install project
 
@@ -47,7 +49,7 @@ Now using node v8.9.4 (npm v5.6.0)
 $ nvm use
 Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <8.9.4>
 Now using node v8.9.4 (npm v5.6.0)
-$ yarn
+$ yarn bootstrap
 ```
 
 #### Workspace info
@@ -77,13 +79,20 @@ Hosts must be registered in development.
 127.0.0.1 dev.blahblah.tech
 ```
 
+#### Serve to production
+
+```bash
+$ yarn prebootstrap
+$ yarn serve
+```
+
 ### Continous Integration
 
 This project is testing and generating coverage reports in [Travis CI](https://travis-ci.org/)
 
 ```bash
-$ yarn install
-$ yarn coverage:report
+$ yarn bootstrap
+$ yarn coverage
 ```
 
 ## License
