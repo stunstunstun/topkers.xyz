@@ -4,7 +4,7 @@ const router = new Router({
   prefix: '/monitor',
 })
 
-router.get('/l7check', async (ctx) => {
+router.get('/l7check', async ctx => {
   ctx.status = 200
 })
 
