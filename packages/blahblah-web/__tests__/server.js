@@ -1,18 +1,18 @@
-import path from 'path'
 import { createServer } from 'http'
 import Koa from 'koa'
 import compress from 'koa-compress'
 import helmet from 'koa-helmet'
 import koaLogger from 'koa-logger'
 import bodyParser from 'koa-bodyparser'
-import serve from 'koa-static'
-import routes, { clientErrorHandler, errorHandler, notFoundHandler, HttpError } from 'blahblah-web'
+import config from 'blahblah-config'
+import routes from '../src'
+import { clientErrorHandler, errorHandler, notFoundHandler } from '../src/errors'
+import HttpError from '../src/errors/HttpError'
 
 const zlib = require('zlib')
 
 const app = new Koa()
 app
-  .use(serve(path.join(process.cwd(), 'build')))
   .use(koaLogger())
   .use(
     compress({
@@ -35,4 +35,6 @@ app.use(routes)
 app.use(notFoundHandler)
 
 const server = createServer(app.callback())
-server.listen(10080)
+server.listen(config.port)
+
+export default server

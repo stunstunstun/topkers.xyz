@@ -6,7 +6,7 @@ export default class Post extends React.Component {
     const { posts } = this.props
     return (
       <ul className="post-list">
-        {posts.map(post => (
+        {posts.data.map(post => (
           <li key={post.id}>
             <a href={post.link} target="_blank" className="post-cover">
               <div className="post-cover-info">
