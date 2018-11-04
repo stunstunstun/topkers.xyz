@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint '__tests__/**' 'src/**'",
     "test": "jest",
+    "provide": "node src/provide.js",
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c"
   },
   "dependencies": {

@@ -37,14 +37,15 @@ async function reddit({ since = 'week', size }) {
   const body = await response.json()
   return body.data.children.map(item => {
     const post = item.data
-    const { id, title, url, domain, author_fullname } = post
+    const { id, title, url, domain, name, thumbnail } = post
     return new Post({
       id,
       source: 'reddit',
       title,
       desc: domain,
       link: url,
-      author: author_fullname,
+      author: name,
+      avatar: thumbnail,
     })
   })
 }
@@ -69,8 +70,8 @@ async function githubRepos({ language, days = 30 }) {
     return new Post({
       id,
       source: 'github.repos',
-      title: `[${language}] ${name}`,
-      desc: `⭐ ${stargazers_count}`,
+      title: `${name}`,
+      desc: `${language}  ⭐  ${stargazers_count}`,
       link: html_url,
       author: owner.login,
       avatar: owner.avatar_url,
@@ -106,6 +107,7 @@ async function githubTrending({ since = 'monthly' }) {
         .parent()
         .text()
         .replace('Star', '⭐')
+        .replace(/\r\n/g, '')
         .replace(/\n/g, '')
         .trim()
       const url = `https://github.com${repoNode.find('h3 a').attr('href')}`
