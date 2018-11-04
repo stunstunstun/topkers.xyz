@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint '__tests__' './*.js'",
+    "lint": "eslint '__tests__/**' 'src/**'",
     "test": "yarn lint && jest",
     "coverage": "yarn test --coverage"
   },
