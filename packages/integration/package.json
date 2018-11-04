@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint '__tests__/**' 'src/**'",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",

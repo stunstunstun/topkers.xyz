@@ -64,6 +64,13 @@ $ yarn test
 $ yarn start
 ```
 
+## References
+
+The repository is collecting data through the links below. Thank you!
+- https://www.reddit.com/dev/api/
+- https://github.com/
+- https://github.com/sarojaba/awesome-devblog
+
 ## License
 
 ```
