@@ -25,12 +25,27 @@ function request(endpoint, options) {
   })
 }
 
-async function reddit(options) {
+async function reddit({ since = 'week', size }) {
+  const options = {
+    method: 'GET',
+    params: {
+      t: since,
+      limit: size,
+    },
+  }
   const response = await request(config.api.reddit, options)
   const body = await response.json()
   return body.data.children.map(item => {
     const post = item.data
-    return new Post(post.id, post.title, post.url, post.domain, post.author)
+    const { id, title, url, domain, author_fullname } = post
+    return new Post({
+      id,
+      source: 'reddit',
+      title,
+      desc: domain,
+      link: url,
+      author: author_fullname,
+    })
   })
 }
 
@@ -49,7 +64,18 @@ async function githubRepos({ language, days = 30 }) {
   const { repos } = config.api.github
   const response = await request(repos, options)
   const body = await response.json()
-  return body.items.map(item => new Post(item.id, item.full_name, item.html_url, item.language, `🤩 ${item.stargazers_count}`))
+  return body.items.map(item => {
+    const { id, name, html_url, language, stargazers_count, owner } = item
+    return new Post({
+      id,
+      source: 'github.repos',
+      title: `[${language}] ${name}`,
+      desc: `⭐ ${stargazers_count}`,
+      link: html_url,
+      author: owner.login,
+      avatar: owner.avatar_url,
+    })
+  })
 }
 
 async function githubTrending({ since = 'monthly' }) {
@@ -79,11 +105,17 @@ async function githubTrending({ since = 'monthly' }) {
         .find('a svg.octicon-star')
         .parent()
         .text()
-        .replace('Star', '🤩')
+        .replace('Star', '⭐')
         .replace(/\n/g, '')
         .trim()
       const url = `https://github.com${repoNode.find('h3 a').attr('href')}`
-      return new Post(name, name, url, desc, stars)
+      return new Post({
+        id: `${new Date().getTime()}${index}`,
+        source: 'github.trending',
+        title: `${name} ${stars}`,
+        desc,
+        link: url,
+      })
     })
     .get()
 }
@@ -99,7 +131,18 @@ async function devblogs({ category, page = 0, size = 10 }) {
   const { personal, team } = config.api.devblogs
   const response = await request(category === 'team' ? team : personal, options)
   const res = await response.json()
-  return res.map(item => new Post(item.author, item.title, item.link, item.description, item.author))
+  return res.map(item => {
+    const { _id, title, link, description, author, imgUrl } = item
+    return new Post({
+      id: _id,
+      source: `devblogs.${category}`,
+      title,
+      desc: description,
+      link,
+      author,
+      avatar: imgUrl,
+    })
+  })
 }
 
 module.exports = {

@@ -1,45 +1,42 @@
 const { Post } = require('../src/index')
 const { reddit, devblogs, githubRepos, githubTrending } = require('../src/services')
 
+const size = 20
+
 describe('Posts', () => {
   test('Get resources by Reddit', async () => {
     expect.hasAssertions()
-    const limit = 5
-    const t = 'week'
-    const options = {
-      method: 'GET',
-      body: {
-        limit,
-        t,
-      },
-    }
-    const posts = await reddit(options)
-    expect(Array.isArray(posts)).toBeTruthy()
-    expect(posts[0] instanceof Post).toBeTruthy()
-    expect(posts[0].id).toBeTruthy()
+    const posts = await reddit({ since: 'week', size })
+    const [post] = posts
+    expect(posts.length).toBe(size)
+    expect(post instanceof Post).toBeTruthy()
+    expect(post.id).toBeTruthy()
   })
 
   test('Get resources by Devblog', async () => {
     expect.hasAssertions()
-    const posts = await devblogs({ category: 'team', size: 20 })
-    expect(Array.isArray(posts)).toBeTruthy()
-    expect(posts[0] instanceof Post).toBeTruthy()
-    expect(posts[0].id).toBeTruthy()
+    const posts = await devblogs({ category: 'team', size })
+    const [post] = posts
+    expect(posts.length).toBe(size)
+    expect(post instanceof Post).toBeTruthy()
+    expect(post.id).toBeTruthy()
   })
 
   test('Get resources by Github Repos', async () => {
     expect.hasAssertions()
     const posts = await githubRepos({ language: 'javascript' })
-    expect(Array.isArray(posts)).toBeTruthy()
-    expect(posts[0] instanceof Post).toBeTruthy()
-    expect(posts[0].id).toBeTruthy()
+    const [post] = posts
+    expect(posts.length).toBe(30)
+    expect(post instanceof Post).toBeTruthy()
+    expect(post.id).toBeTruthy()
   })
 
   test('Get resources by Github Trending', async () => {
     expect.hasAssertions()
     const posts = await githubTrending({ since: 'weekly' })
-    expect(Array.isArray(posts)).toBeTruthy()
-    expect(posts[0] instanceof Post).toBeTruthy()
-    expect(posts[0].id).toBeTruthy()
+    const [post] = posts
+    expect(posts.length).toBe(25)
+    expect(post instanceof Post).toBeTruthy()
+    expect(post.id).toBeTruthy()
   })
 })
