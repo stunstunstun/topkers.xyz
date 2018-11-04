@@ -13,7 +13,7 @@ const DEFAULT_PORT = 9000
 const PORT = process.env.PORT || DEFAULT_PORT
 
 connectDatabase()
-  .then(() => logger.info('Connected to database successfully!'))
+  .then(() => logger.info('✨  It has connected to database successfully!'))
   .catch(err => logger.error(err))
 
 const app = new Koa()

@@ -12,9 +12,9 @@
     "coverage": "run-s lint test:coverage",
     "lerna": "lerna",
     "precommit": "lint-staged",
-    "start": "run-p start:server start:webapp",
+    "start": "run-p start:server start:app",
     "start:server": "lerna run --scope @githubjobs/server start --stream",
-    "start:webapp": "lerna run --scope @githubjobs/webapp start --stream",
+    "start:app": "lerna run --scope @githubjobs/app start --stream",
     "serve": "lerna run --scope @githubjobs/web serve --stream"
   },
   "devDependencies": {
@@ -44,10 +44,13 @@
     "prettier": "^1.14.3",
     "prettier-eslint-cli": "^4.7.1"
   },
-  "workspaces": [
-    "packages/*",
-    "config"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "config"
+    ],
+    "nohoist": ["**/react-scripts", "**/react-scripts/**"]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -58,9 +61,6 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "engines": {
-    "node": ">=10.13.0"
   },
   "homepage": "https://www.githubjobs.xyz/",
   "repository": "https://github.com/stunstunstun/githubjobs",
