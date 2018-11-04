@@ -1,74 +1,68 @@
 {
-  "name": "blahblah.tech",
+  "name": "githubjobs",
   "private": true,
-  "version": "0.1.1",
-  "description": "We can do blahblah about the Programming",
+  "description": "💬 Talk is cheap, show me the your code 🔍 when u get a job!",
   "scripts": {
-    "batch": "lerna exec --scope blahblah-batch --stream yarn start",
-    "bootstrap": "cross-env NODE_ENV=development npm-run-all -s check-versions lerna:prepublish",
-    "build": "cross-env NODE_ENV=production lerna run build --parallel && gulp",
-    "check-versions": "babel-node scripts/check-versions.js",
-    "clean": "rimraf .cache coverage eslint dist *.log *.xml ./packages/**/*.log ./packages/**/*.xml",
-    "coverage": "npm-run-all -s lint:report 'test --no-cache --runInBand --coverage' codecov",
-    "codecov": "codecov",
-    "lint": "eslint . --ignore-path .eslintignore",
-    "lint:html": "eslint . --ignore-path .eslintignore -f html -o eslint/index.html",
-    "lint:checkstyle": "eslint . --ignore-path .eslintignore -f checkstyle > checkstyle-result.xml",
-    "lint:report": "npm-run-all -p lint:html lint:checkstyle",
-    "lint:fix": "eslint --fix . --ignore-path .eslintignore",
-    "jest": "jest",
+    "prebootstrap": "yarn install --production=false",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --parallel",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --parallel",
+    "test:coverage": "lerna run coverage --parallel",
+    "coverage": "run-s lint test:coverage",
     "lerna": "lerna",
-    "lerna:prepublish": "lerna run prepublish",
-    "prebootstrap": "yarn",
-    "start": "cross-env NODE_ENV=development npm-run-all -p watch start:app",
-    "start:app": "lerna exec --scope blahblah-app --stream yarn start",
-    "serve": "lerna run serve --scope blahblah-app",
-    "test": "jest --forceExit",
-    "watch": "lerna run watch --no-sort --stream --concurrency 999"
+    "precommit": "lint-staged",
+    "start": "run-p start:server start:webapp",
+    "start:server": "lerna run --scope @githubjobs/server start --stream",
+    "start:webapp": "lerna run --scope @githubjobs/webapp start --stream",
+    "serve": "lerna run --scope @githubjobs/web serve --stream"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
-    "codecov": "^3.0.0",
-    "cross-env": "^5.1.4",
-    "eslint": "^4.19.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "glob": "^7.1.2",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-sass": "^3.1.0",
-    "husky": "^0.14.3",
-    "lerna": "^2.9.0",
-    "lint-staged": "^7.0.0",
-    "npm-run-all": "^4.1.2",
-    "pm2": "^2.10.2",
-    "prettier": "^1.11.1",
-    "react-scripts": "^1.1.1",
-    "rimraf": "^2.6.2"
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "codecov": "^3.1.0",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-react-app": "^3.0.4",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.2",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "lerna": "^3.4.2",
+    "lint-staged": "^7.3.0",
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.14.3",
+    "prettier-eslint-cli": "^4.7.1"
   },
   "workspaces": [
     "packages/*",
     "config"
   ],
-  "engines": {
-    "node": "^8.9.4",
-    "yarn": "^1.5.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
-      "yarn lint",
+      "prettier --write",
       "git add"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/blah-blah-tech/blahblah.tech.git"
+  "engines": {
+    "node": ">=10.13.0"
   },
-  "homepage": "http://www.blahblah.tech",
-  "author": "stunstunstun",
+  "homepage": "https://www.githubjobs.xyz/",
+  "repository": "https://github.com/stunstunstun/githubjobs",
   "license": "MIT"
 }

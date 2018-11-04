@@ -1,8 +1,0 @@
-{
-  "name": "blahblah-batch",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "author": "stunstunstun",
-  "license": "MIT",
-  "private": false
-}
