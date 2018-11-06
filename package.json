@@ -15,8 +15,7 @@
     "start": "run-p start:server start:app",
     "start:server": "lerna run --scope @githubjobs/server start --stream",
     "start:app": "lerna run --scope @githubjobs/app start --stream",
-    "serve": "lerna run --scope @githubjobs/web serve --stream",
-    "deploy": "run-s deploy:server",
+    "deploy": "run-p deploy:server",
     "deploy:server": "now deploy packages/server/"
   },
   "dependencies": {

@@ -9,9 +9,6 @@ const schema = require('src/graphql')
 const context = require('src/context')
 const logger = require('src/logger')
 
-const DEFAULT_PORT = 9000
-const PORT = process.env.PORT || DEFAULT_PORT
-
 connectDatabase().catch(err => logger.error(`Opps! What's wrong with ${err}`))
 
 const app = new Koa()
@@ -28,8 +25,8 @@ app
   .use(bodyParserGraphQL())
   .use(koaMorgan('combined'))
 
-app.listen(PORT, () => {
-  logger.info(`✨  Server is running on port ${PORT} (..)`)
+app.listen(config.port, () => {
+  logger.info(`✨  Server is running on port ${config.port} (..)`)
 })
 
 app.on('error', err => {

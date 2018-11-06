@@ -9,7 +9,7 @@
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c",
     "pm2": "pm2",
     "start": "NODE_ENV=development NODE_PATH=./ nodemon src",
-    "now-start": "NODE_PATH=./ PORT=9000 pm2 start ./src --name 'githubjobs.now.sh' && pm2 save && pm2 logs --lines=10 2> /dev/null"
+    "now-start": "NODE_PATH=./ NODE_ENV=production pm2 start ./src --name 'githubjobs.now.sh' && pm2 save && pm2 logs --lines=10 2> /dev/null"
   },
   "dependencies": {
     "apollo-server": "^2.0.7",
