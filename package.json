@@ -18,7 +18,7 @@
     "now-build": "yarn bootstrap",
     "now-start": "lerna run --scope @githubjobs/server now-start --stream",
     "deploy": "run-p deploy:server",
-    "deploy:server": "now"
+    "deploy:server": "now && now alias && now rm githubjobs --safe --yes"
   },
   "dependencies": {
     "@githubjobs/config": "^1.0.0",
@@ -77,8 +77,8 @@
   "repository": "https://github.com/stunstunstun/githubjobs",
   "license": "MIT",
   "now": {
-    "name": "githubxjobs",
-    "alias": "githubxjobs.now.sh",
+    "name": "githubjobs",
+    "alias": "githubjobs.now.sh",
     "engines": {
       "node": "8.x.x"
     },
