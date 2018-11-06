@@ -15,7 +15,14 @@
     "start": "run-p start:server start:app",
     "start:server": "lerna run --scope @githubjobs/server start --stream",
     "start:app": "lerna run --scope @githubjobs/app start --stream",
-    "serve": "lerna run --scope @githubjobs/web serve --stream"
+    "serve": "lerna run --scope @githubjobs/web serve --stream",
+    "deploy": "run-s deploy:server",
+    "deploy:server": "now deploy packages/server/"
+  },
+  "dependencies": {
+    "@githubjobs/config": "^1.0.0",
+    "@githubjobs/domain": "^1.0.0",
+    "@githubjobs/integration": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

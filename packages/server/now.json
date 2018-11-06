@@ -1,0 +1,6 @@
+{
+  "alias": "githubjobs.now.sh",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

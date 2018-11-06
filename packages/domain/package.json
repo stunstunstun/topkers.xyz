@@ -9,7 +9,6 @@
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c"
   },
   "dependencies": {
-    "@githubjobs/config": "^1.0.0",
     "mongoose": "^5.2.17",
     "shortid": "^2.2.13"
   },

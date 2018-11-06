@@ -3,8 +3,8 @@ const config = require('@githubjobs/config')
 const logger = require('./logger')
 
 const connection = mongoose.connection
-connection.on('error', e => {
-  logger.error(e)
+connection.on('error', err => {
+  logger.error(`Opps! Occur connection error with ${err}`)
 })
 connection.once('open', () => {
   logger.info(`✨  Mongodb connection has been opened.`)

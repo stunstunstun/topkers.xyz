@@ -9,11 +9,9 @@
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c",
     "pm2": "pm2",
     "start": "NODE_ENV=development NODE_PATH=./ nodemon src",
-    "serve": "NODE_ENV=production NODE_PATH=./ PORT=10080 pm2 start ./src --name '@githubjobs/server' && pm2 save 2> /dev/null"
+    "now-start": "NODE_PATH=./ PORT=9000 pm2 start ./src --name 'githubjobs.now.sh' && pm2 save && pm2 logs --lines=10 2> /dev/null"
   },
   "dependencies": {
-    "@githubjobs/domain": "^1.0.0",
-    "@githubjobs/integration": "^1.0.0",
     "apollo-server": "^2.0.7",
     "apollo-server-koa": "^2.1.0",
     "body-parser-graphql": "^1.1.0",
@@ -29,11 +27,11 @@
     "koa-jwt": "^3.5.1",
     "koa-morgan": "^1.0.1",
     "lodash": "^4.17.10",
+    "pm2": "^3.2.2",
     "winston": "^3.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3",
-    "pm2": "^3.2.2",
     "supertest": "^3.3.0"
   },
   "author": "stunstunstun",
