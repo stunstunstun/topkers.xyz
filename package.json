@@ -17,7 +17,8 @@
     "start:app": "lerna run --scope @githubjobs/app start --stream",
     "now-build": "yarn bootstrap",
     "now-start": "lerna run --scope @githubjobs/server now-start --stream",
-    "deploy": "run-p deploy:server",
+    "deploy": "run-p deploy:app deploy:server",
+    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream",
     "deploy:server": "now && now alias && now rm githubjobs --safe --yes"
   },
   "dependencies": {
