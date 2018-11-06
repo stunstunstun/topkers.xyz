@@ -1,7 +1,0 @@
-{
-  "name": "@githubjobs",
-  "alias": "githubjobs.now.sh",
-  "engines": {
-    "node": "8.x.x"
-  }
-}

@@ -3,7 +3,7 @@
   "private": true,
   "description": "💬 Talk is cheap, show me the your code 🔍 when u get a job!",
   "scripts": {
-    "prebootstrap": "yarn install --production=false",
+    "prebootstrap": "yarn install",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build --parallel",
     "lint": "lerna run lint --parallel",
@@ -15,13 +15,16 @@
     "start": "run-p start:server start:app",
     "start:server": "lerna run --scope @githubjobs/server start --stream",
     "start:app": "lerna run --scope @githubjobs/app start --stream",
+    "now-build": "yarn bootstrap",
+    "now-start": "lerna run --scope @githubjobs/server now-start --stream",
     "deploy": "run-p deploy:server",
-    "deploy:server": "now deploy packages/server/"
+    "deploy:server": "now"
   },
   "dependencies": {
     "@githubjobs/config": "^1.0.0",
     "@githubjobs/domain": "^1.0.0",
-    "@githubjobs/integration": "^1.0.0"
+    "@githubjobs/integration": "^1.0.0",
+    "lerna": "^3.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -44,7 +47,6 @@
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
-    "lerna": "^3.4.2",
     "lint-staged": "^8.0.4",
     "npm-run-all": "^4.1.3",
     "prettier": "^1.14.3",
@@ -73,5 +75,15 @@
   },
   "homepage": "https://www.githubjobs.xyz/",
   "repository": "https://github.com/stunstunstun/githubjobs",
-  "license": "MIT"
+  "license": "MIT",
+  "now": {
+    "name": "githubxjobs",
+    "alias": "githubxjobs.now.sh",
+    "engines": {
+      "node": "8.x.x"
+    },
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
 }

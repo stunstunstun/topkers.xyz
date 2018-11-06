@@ -15,8 +15,6 @@ const app = new Koa()
 const apolloServer = new ApolloServer({
   schema,
   context,
-  cacheControl: true,
-  engine: false,
 })
 apolloServer.applyMiddleware({ app })
 
