@@ -1,8 +1,9 @@
 const Joi = require('joi')
 const path = require('path')
 
+const envFileName = process.env.NODE_ENV === 'development' ? '.env' : `.env.${process.env.NODE_ENV}`
 require('dotenv').config({
-  path: path.join(path.normalize(__dirname), '.env'),
+  path: path.join(path.normalize(__dirname), envFileName),
 })
 
 const envVarsSchema = Joi.object({

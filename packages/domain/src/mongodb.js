@@ -15,6 +15,7 @@ mongoose.set('useCreateIndex', true)
 mongoose.set('debug', config.mongooseDebug)
 
 const connectDatabase = async (options = { keepAlive: 1, useNewUrlParser: true }) => {
+  logger.info(config.mongoUri)
   return mongoose.connect(
     config.mongoUri,
     options,
