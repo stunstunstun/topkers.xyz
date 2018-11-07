@@ -11,3 +11,4 @@ config/.env.production
 *.xml
 *.tgz
 *.log
+*.sh

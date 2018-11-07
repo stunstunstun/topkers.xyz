@@ -14,8 +14,19 @@
 Required | Description
 --|--
 [Git](https://git-scm.com/) | We follow the [GitHub Flow](https://guides.github.com/introduction/flow/)
-[Node.js](nodejs.org) | >= 8
+[MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-community-edition) | 4.0 or above
+[Node.js](nodejs.org) | 8.11.2 LTS or above
 [Yarn](https://yarnpkg.com/lang/en/) | Recommend [stable version](https://github.com/yarnpkg/yarn/releases)
+
+### Install MongoDB
+
+The project use MongoDB as documents store
+
+```
+$ brew update
+$ brew install mongodb
+```
+> https://docs.mongodb.com/manual/administration/install-community/
 
 ### Install Node, Yarn
 
