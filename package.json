@@ -14,10 +14,9 @@
     "lerna": "lerna",
     "precommit": "lint-staged",
     "start": "lerna run --scope @githubjobs/server start --stream",
-    "start:app": "lerna run --scope @githubjobs/app start --stream",
     "deploy": "run-s build deploy:app deploy:server",
-    "deploy:server": "git push heroku HEAD:master && heroku ps:scale web=1 && heroku open && heroku logs --tail 2> /dev/null",
-    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream"
+    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream",
+    "deploy:server": "git push heroku HEAD:master && heroku ps:scale web=1 && heroku open && heroku logs --tail 2> /dev/null"
   },
   "dependencies": {
     "@githubjobs/config": "^1.0.0",

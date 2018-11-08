@@ -72,8 +72,15 @@ $ yarn test
 #### Run
 
 ```bash
-$ yarn start
+$ yarn dev
 ```
+
+`localhost`
+packages | PORT
+---|---
+server | 10080
+app | 10001
+admin | 10000
 
 ## References
 

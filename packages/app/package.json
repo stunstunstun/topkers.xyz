@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint 'src/**/**.js'",
     "dev": "run-s lint start",
-    "start": "react-scripts start",
+    "start": "PORT=10001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

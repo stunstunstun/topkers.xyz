@@ -5,7 +5,6 @@
   "scripts": {
     "lint": "eslint '__tests__/**' 'src/**'",
     "test": "jest",
-    "dev": "node src/provide.js",
     "prod": "NODE_ENV=production node src/executeCronJobs &",
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c"
   },
