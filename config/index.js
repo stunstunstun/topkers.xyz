@@ -30,6 +30,7 @@ if (error) {
 }
 
 const config = {
+  isDev: () => this.env === 'development',
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   mongooseDebug: envVars.MONGOOSE_DEBUG,

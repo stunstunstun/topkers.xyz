@@ -86,8 +86,9 @@ admin | 10000
 ## References
 
 The repository is collecting data through the links below. Thank you!
+
 - https://www.reddit.com/dev/api/
-- https://github.com/
+- https://api.github.com/
 - https://github.com/sarojaba/awesome-devblog
 
 ## License
@@ -98,6 +99,5 @@ MIT
 
 [build-status-badge]: https://travis-ci.org/stunstunstun/githubjobs.svg?branch=develop
 [build-status-link]: https://travis-ci.org/stunstunstun/githubjobs
-
 [codecov-badge]: https://codecov.io/gh/stunstunstun/githubjobs/branch/develop/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/stunstunstun/githubjobs
