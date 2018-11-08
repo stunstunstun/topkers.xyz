@@ -12,14 +12,10 @@
     "coverage": "run-s lint test:coverage",
     "lerna": "lerna",
     "precommit": "lint-staged",
-    "start": "run-p start:server start:app",
-    "start:server": "lerna run --scope @githubjobs/server start --stream",
+    "start": "lerna run --scope @githubjobs/server start --stream",
     "start:app": "lerna run --scope @githubjobs/app start --stream",
-    "now-build": "yarn bootstrap",
-    "now-start": "lerna run --scope @githubjobs/server now-start --stream",
-    "deploy": "run-p deploy:app deploy:server",
-    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream",
-    "deploy:server": "now && sleep 60 && now alias && now rm githubjobs --safe --yes"
+    "deploy": "git push heroku HEAD:master && heroku ps:scale web=1 && heroku open && heroku logs --tail 2> /dev/null",
+    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream"
   },
   "dependencies": {
     "@githubjobs/config": "^1.0.0",
