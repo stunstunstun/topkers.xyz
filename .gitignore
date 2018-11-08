@@ -2,6 +2,7 @@
 .idea/
 .vscode/
 .cache/
+.next/
 node_modules/
 build/
 coverage/
