@@ -6,13 +6,14 @@
     "lint": "eslint '__tests__/**' 'src/**'",
     "test": "jest",
     "dev": "node src/provide.js",
-    "prod": "NODE_ENV=production node src/provide.js",
+    "prod": "NODE_ENV=production node src/executeCronJobs &",
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "isomorphic-fetch": "^2.2.1",
-    "moment": "^2.21.0"
+    "moment": "^2.21.0",
+    "node-cron": "^2.0.3"
   },
   "author": "stunstunstun",
   "license": "MIT"
