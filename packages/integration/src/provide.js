@@ -1,4 +1,4 @@
-const { connectDatabase, Post } = require('@githubjobs/domain')
+const { connectDatabase, SOURCE, Post } = require('@githubjobs/domain')
 const { reddit, githubRepos, githubTrending, devblogs } = require('./services')
 const logger = require('./logger')
 
@@ -9,24 +9,23 @@ connectDatabase()
   .catch(err => logger.error(err))
 
 async function provide() {
-  const values = await Promise.all([
-    reddit({ since: 'week', size }),
-    githubRepos({ language: 'javascript' }),
-    githubTrending({ since: 'weekly' }),
-    devblogs({ category: 'personal', size }),
-    devblogs({ category: 'team', size }),
-  ])
-  const collections = []
-  values.forEach(value => Array.prototype.push.apply(collections, value))
-  collections.forEach(async item => {
-    const post = new Post({
-      ...item,
-    })
-    return post.save()
-  })
-  logger.info(`✨  ${collections.length} items has been inserted to database successfully!`)
+  const posts = Array.prototype.concat.apply(
+    [],
+    await Promise.all([
+      reddit({ since: 'week', size }),
+      githubRepos({ language: 'javascript' }),
+      githubTrending({ since: 'weekly' }),
+      devblogs({ source: SOURCE.DEVBLOGS_PERSONAL, size }),
+      devblogs({ source: SOURCE.DEVBLOGS_TEAM, size }),
+    ]),
+  )
+  const results = await Post.insertMany(posts)
+  logger.info(`✨  ${results.length} items has been inserted to database successfully!`)
 }
 
 provide()
   .then(() => process.exit(0))
-  .catch(err => logger.error(err))
+  .catch(err => {
+    logger.error(err)
+    process.exit(0)
+  })

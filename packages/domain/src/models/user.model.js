@@ -5,19 +5,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  userInfo: {},
   serviceType: {
-    type: String,
+    type: Number,
     required: true,
   },
   token: {
     type: String,
     required: true,
-  },
-  facebook: {
-    type: Object,
-  },
-  email: {
-    type: Object,
   },
   created: {
     type: Date,

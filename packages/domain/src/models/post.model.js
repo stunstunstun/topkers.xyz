@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
     unique: true,
   },
   source: {
-    type: String,
+    type: Number,
     required: true,
   },
   title: {
@@ -28,6 +28,12 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+})
+
+postSchema.index({ id: 1, source: 1 }, { unique: true })
+
+postSchema.pre('updateMany', function hook() {
+  this.updateMany({}, { $set: { updated: new Date() } })
 })
 
 module.exports = mongoose.model('Post', postSchema)

@@ -1,6 +1,7 @@
 const fetch = require('isomorphic-fetch')
 const cheerio = require('cheerio')
 const moment = require('moment')
+const { SOURCE } = require('@githubjobs/domain')
 const Post = require('./Post')
 const config = require('./config')
 
@@ -40,7 +41,7 @@ async function reddit({ since = 'week', size }) {
     const { id, title, url, domain, name, thumbnail } = post
     return new Post({
       id,
-      source: 'reddit',
+      source: SOURCE.REDDIT,
       title,
       desc: domain,
       link: url,
@@ -69,7 +70,7 @@ async function githubRepos({ language, days = 30 }) {
     const { id, name, html_url, language, stargazers_count, owner } = item
     return new Post({
       id,
-      source: 'github.repos',
+      source: SOURCE.GITHUB_REPOS,
       title: `${name}`,
       desc: `${language}  ⭐  ${stargazers_count}`,
       link: html_url,
@@ -113,7 +114,7 @@ async function githubTrending({ since = 'monthly' }) {
       const url = `https://github.com${repoNode.find('h3 a').attr('href')}`
       return new Post({
         id: `${new Date().getTime()}${index}`,
-        source: 'github.trending',
+        source: SOURCE.GITHUB_TRENDING,
         title: `${name} ${stars}`,
         desc,
         link: url,
@@ -122,7 +123,7 @@ async function githubTrending({ since = 'monthly' }) {
     .get()
 }
 
-async function devblogs({ category, page = 0, size = 10 }) {
+async function devblogs({ source, page = 0, size = 10 }) {
   const options = {
     method: 'GET',
     params: {
@@ -131,13 +132,13 @@ async function devblogs({ category, page = 0, size = 10 }) {
     },
   }
   const { personal, team } = config.api.devblogs
-  const response = await request(category === 'team' ? team : personal, options)
+  const response = await request(source === SOURCE.DEVBLOGS_PERSONAL ? personal : team, options)
   const res = await response.json()
   return res.map(item => {
     const { _id, title, link, description, author, imgUrl } = item
     return new Post({
       id: _id,
-      source: `devblogs.${category}`,
+      source,
       title,
       desc: description,
       link,

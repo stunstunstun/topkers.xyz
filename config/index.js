@@ -1,8 +1,9 @@
 const Joi = require('joi')
 const path = require('path')
 
-const phase = process.env.NODE_ENV
-const envFileName = phase === 'development' ? '.env' : `.env.${phase}`
+const defaultPhase = 'development'
+const phase = process.env.NODE_ENV || defaultPhase
+const envFileName = phase === defaultPhase ? '.env' : `.env.${phase}`
 require('dotenv').config({
   path: path.join(path.normalize(__dirname), envFileName),
 })

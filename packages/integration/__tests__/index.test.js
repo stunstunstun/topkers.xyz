@@ -1,3 +1,4 @@
+const { SOURCE } = require('@githubjobs/domain')
 const { Post } = require('../src/index')
 const { reddit, devblogs, githubRepos, githubTrending } = require('../src/services')
 
@@ -15,7 +16,7 @@ describe('Posts', () => {
 
   test('Get resources by Devblog', async () => {
     expect.hasAssertions()
-    const posts = await devblogs({ category: 'team', size })
+    const posts = await devblogs({ source: SOURCE.DEVBLOGS_TEAM, size })
     const [post] = posts
     expect(posts.length).toBe(size)
     expect(post instanceof Post).toBeTruthy()
