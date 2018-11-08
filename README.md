@@ -15,7 +15,7 @@ Required | Description
 --|--
 [Git](https://git-scm.com/) | We follow the [GitHub Flow](https://guides.github.com/introduction/flow/)
 [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-community-edition) | 4.0 or above
-[Node.js](nodejs.org) | 8.11.2 LTS or above
+[Node.js](nodejs.org) | 10.13.0 LTS or above
 [Yarn](https://yarnpkg.com/lang/en/) | Recommend [stable version](https://github.com/yarnpkg/yarn/releases)
 
 ### Install MongoDB
@@ -35,7 +35,7 @@ The project manages the version of node through `nvm`
 ```
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 $ command -v nvm
-$ nvm install 8
+$ nvm install 10
 $ which node
 $ npm install -g yarn
 ```
@@ -44,7 +44,7 @@ In the project root as follows are performed through the `.nvmrc`
 
 ```
 $ nvm use
-Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <8.11.2>
+Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <10.13.0>
 ```
 
 ### Yarn CLIs
