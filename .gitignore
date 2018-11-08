@@ -7,7 +7,6 @@ build/
 coverage/
 dist/
 eslint/
-config/.env.*
 *.xml
 *.tgz
 *.log
