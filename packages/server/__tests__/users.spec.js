@@ -3,24 +3,62 @@ const { closeDatabase } = require('@githubjobs/domain')
 const server = require('./environments/server')
 
 describe('Integration Testing with Users', () => {
+  let token
   afterAll(async () => {
     closeDatabase()
   })
 
-  test('Sign up', async () => {
-    const query = `
-      mutation {
-        signup(type:EMAIL, token: "wjdsupj@gmail.com") {
-          token
+  describe('Mutations', () => {
+    test('Signup', async () => {
+      const query = `
+        mutation {
+          signup(type:EMAIL, token: "wjdsupj@gmail.com") {
+            token
+          }
         }
-      }
-    `
-    const { body } = await request(server)
-      .post('/graphql')
-      .send({ query })
-      .expect('Content-Type', /json/)
-      .expect(200)
+      `
+      const { body } = await request(server)
+        .post('/graphql')
+        .send({ query })
+        .expect('Content-Type', /json/)
+        .expect(200)
 
-    expect(body.data.signup).toBeTruthy()
+      const { signup } = body.data
+      expect(signup).toEqual(
+        expect.objectContaining({
+          token: expect.any(String),
+        }),
+      )
+      token = signup.token
+    })
+  })
+
+  describe('Queries', () => {
+    test('Me', async () => {
+      const query = `
+        query {
+          me {
+            id
+            token
+            userInfo
+          }
+        }
+      `
+      const { body } = await request(server)
+        .post('/graphql')
+        .send({ query })
+        .set('Authorization', `Bearer ${token}`)
+        .expect('Content-Type', /json/)
+        .expect(200)
+
+      const { me } = body.data
+      expect(me).toEqual(
+        expect.objectContaining({
+          id: expect.any(String),
+          token: expect.any(String),
+          userInfo: expect.any(Object),
+        }),
+      )
+    })
   })
 })
