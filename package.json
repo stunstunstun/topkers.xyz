@@ -72,16 +72,5 @@
   },
   "homepage": "https://www.githubjobs.xyz/",
   "repository": "https://github.com/stunstunstun/githubjobs",
-  "license": "MIT",
-  "now": {
-    "name": "githubjobs",
-    "alias": "githubjobs.now.sh",
-    "engines": {
-      "node": "8.x.x"
-    },
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "files": ["config"]
-  }
+  "license": "MIT"
 }
