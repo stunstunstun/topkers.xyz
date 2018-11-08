@@ -19,7 +19,7 @@
     "now-start": "lerna run --scope @githubjobs/server now-start --stream",
     "deploy": "run-p deploy:app deploy:server",
     "deploy:app": "lerna run --scope @githubjobs/app deploy --stream",
-    "deploy:server": "now && now alias && now rm githubjobs --safe --yes"
+    "deploy:server": "now && sleep 60 && now alias && now rm githubjobs --safe --yes"
   },
   "dependencies": {
     "@githubjobs/config": "^1.0.0",
