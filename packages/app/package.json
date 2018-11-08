@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint 'src/**/**.js'",
-    "development": "NODE_ENV=development run-s lint start",
+    "development": "run-s lint start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -17,6 +17,9 @@
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1"
   },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -26,8 +29,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
-  }
+  ]
 }
