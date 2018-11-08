@@ -1,31 +1,36 @@
 const mongoose = require('mongoose')
+const { SERVICE_TYPE } = require('../constants')
 
 const userSchema = new mongoose.Schema({
   id: {
     type: String,
-    unique: true,
+    trim: true,
+    required: true,
   },
-  userInfo: {},
   serviceType: {
     type: Number,
     required: true,
+    enum: Object.values(SERVICE_TYPE),
   },
   token: {
     type: String,
     required: true,
   },
+  userInfo: {},
   created: {
     type: Date,
-    default: Date.now,
+    required: true,
   },
   updated: {
     type: Date,
-    default: Date.now,
+    required: true,
   },
 })
 
+userSchema.index({ id: 1, serviceType: 1 }, { unique: true })
+
 userSchema.pre('findOneAndUpdate', function hook() {
-  this.findOneAndUpdate({}, { $set: { updated: new Date() } })
+  this.findOneAndUpdate({}, { updated: new Date() })
 })
 
 module.exports = mongoose.model('User', userSchema)

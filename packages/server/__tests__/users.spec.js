@@ -7,10 +7,10 @@ describe('Integration Testing with Users', () => {
     closeDatabase()
   })
 
-  test('Sign up with bad request', async () => {
+  test('Sign up', async () => {
     const query = `
       mutation {
-        signup(type:FACEBOOK, data: "") {
+        signup(type:EMAIL, token: "wjdsupj@gmail.com") {
           token
         }
       }
@@ -21,11 +21,6 @@ describe('Integration Testing with Users', () => {
       .expect('Content-Type', /json/)
       .expect(200)
 
-    const { data } = body
-    expect(data).toEqual(
-      expect.objectContaining({
-        signup: expect.any(Object),
-      }),
-    )
+    expect(body.data.signup).toBeTruthy()
   })
 })

@@ -1,6 +1,6 @@
 const SERVICE_TYPE = Object.freeze({
   GITHUB: 0,
-  FACEBOOK: 1,
+  EMAIL: 1,
 })
 
 const SOURCE = Object.freeze({
