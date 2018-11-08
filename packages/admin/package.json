@@ -1,0 +1,22 @@
+{
+  "name": "@githubjobs/admin",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next -p 10000",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^7.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "styled-components": "^4.0.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.8.0"
+  },
+  "author": "stunstunstun",
+  "license": "MIT",
+  "private": true
+}

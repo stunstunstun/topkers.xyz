@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint 'src/**/**.js'",
-    "development": "run-s lint start",
+    "dev": "run-s lint start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

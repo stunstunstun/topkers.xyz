@@ -7,7 +7,7 @@
     "lint": "eslint '__tests__/**' 'src/**'",
     "test": "jest --runInBand --detectOpenHandles --forceExit",
     "coverage": "yarn test --coverage && codecov --token=eed9869b-de3f-4765-b0d2-5ad81d4cd06c",
-    "development": "NODE_ENV=development NODE_PATH=./ nodemon ./src",
+    "dev": "NODE_ENV=development NODE_PATH=./ nodemon ./src",
     "pm2": "pm2",
     "start": "NODE_PATH=./ NODE_ENV=production pm2 start ./src --name 'githubjobs' && pm2 save && pm2 logs --lines=10 2> /dev/null"
   },
