@@ -76,7 +76,7 @@ $ yarn dev
 ```
 
 packages | localhost | environments as production
----|---
+---|---|---
 server | http://localhost:10080 | https://githubjobs.herokuapp.com/graphql
 app | http://localhost:10001 | https://www.githubjobs.xyz/
 admin | http://localhost:10000 | https://githubjobs.now.sh/
