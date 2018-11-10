@@ -10,7 +10,7 @@ describe('Post model', () => {
       const stub = sinon.stub(Post, 'find')
       stub.resolves([fixtures])
 
-      const posts = await Post.find({ source: 'reddit' })
+      const posts = await Post.find({ source: 0 })
       stub.restore()
       expect(Array.isArray(posts)).toBeTruthy()
     })

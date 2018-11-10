@@ -1,5 +1,6 @@
 const request = require('supertest')
 const { closeDatabase } = require('@githubjobs/domain')
+const { defaultSource } = require('src/graphql/post')
 const server = require('./environments/server')
 
 describe('Post', () => {
@@ -7,19 +8,50 @@ describe('Post', () => {
     closeDatabase()
   })
 
-  describe('Queries', () => {
-    test('Posts', async () => {
+  describe('Mutations', () => {
+    test('createPost', async () => {
       const query = `
-        query {
-          posts {
+        mutation {
+          createPost(input: {
+            id: "sd098xx82",
+            source: ${defaultSource},
+            title: "This is text content",
+            link: "http://localhost:10080/graphql"
+          }) {
             id
             source
             title
-            desc
             link
-            author
-            avatar
-            created
+          }
+        }
+      `
+      const { body } = await request(server)
+        .post('/graphql')
+        .send({ query })
+        .expect('Content-Type', /json/)
+        .expect(200)
+
+      const { createPost } = body.data
+      expect(createPost).toEqual(
+        expect.objectContaining({
+          id: expect.any(String),
+          source: expect.any(Number),
+          title: expect.any(String),
+          link: expect.any(String),
+        }),
+      )
+    })
+  })
+
+  describe('Queries', () => {
+    test('posts', async () => {
+      const query = `
+        query {
+          posts(type:BLOG_PERSONAL) {
+            id
+            source
+            title
+            link
           }
         }
       `
@@ -33,13 +65,9 @@ describe('Post', () => {
       expect(post).toEqual(
         expect.objectContaining({
           id: expect.any(String),
-          source: 3,
+          source: expect.any(Number),
           title: expect.any(String),
-          desc: expect.any(String),
           link: expect.any(String),
-          author: expect.any(String),
-          avatar: expect.any(String),
-          created: expect.any(String),
         }),
       )
     })

@@ -32,8 +32,12 @@ const postSchema = new mongoose.Schema({
 
 postSchema.index({ id: 1, source: 1 }, { unique: true })
 
+postSchema.pre('findOneAndUpdate', function hook() {
+  this.findOneAndUpdate({}, { updated: new Date() })
+})
+
 postSchema.pre('updateMany', function hook() {
-  this.updateMany({}, { $set: { updated: new Date() } })
+  this.updateMany({}, { updated: new Date() })
 })
 
 module.exports = mongoose.model('Post', postSchema)

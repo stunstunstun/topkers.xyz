@@ -33,5 +33,4 @@ schemaComposer.Query.addFields({
 
 schemaComposer.Mutation.addFields({
   signup: userTypeComposer.getResolver('signup'),
-  updateById: userTypeComposer.getResolver('updateById'),
 })

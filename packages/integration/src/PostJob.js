@@ -9,17 +9,33 @@ module.exports = async () => {
     .then(() => logger.info('✨  It has connected to database successfully!'))
     .catch(err => logger.error(err))
 
-  const posts = Array.prototype.concat.apply(
-    [],
-    await Promise.all([
-      reddit({ since: 'week', size }),
-      githubRepos({ language: 'javascript' }),
-      githubTrending({ since: 'weekly' }),
-      devblogs({ source: SOURCE.BLOG_PERSONAL, size }),
-      devblogs({ source: SOURCE.BLOG_TEAM, size }),
-    ]),
-  )
-  const results = await Post.insertMany(posts)
-  logger.info(`✨  ${results.length} items has been inserted to database successfully!`)
+  const posts = Array.prototype.concat
+    .apply(
+      [],
+      await Promise.all([
+        reddit({ since: 'day', size }),
+        githubRepos({ language: 'javascript', days: 1 }),
+        githubTrending({ since: 'daily' }),
+        devblogs({ source: SOURCE.BLOG_PERSONAL, size }),
+        devblogs({ source: SOURCE.BLOG_TEAM, size }),
+      ]),
+    )
+    .map(async post => {
+      return Post.findOneAndUpdate(
+        {},
+        {
+          $set: post,
+          $setOnInsert: {
+            created: new Date(),
+          },
+        },
+        {
+          setDefaultsOnInsert: true,
+          upsert: true,
+          new: true,
+        },
+      )
+    })
+  logger.info(`✨  ${posts.length} items has been inserted to database successfully!`)
   await closeDatabase()
 }

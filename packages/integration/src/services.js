@@ -51,9 +51,9 @@ async function reddit({ since = 'week', size }) {
   })
 }
 
-async function githubRepos({ language, days = 30 }) {
+async function githubRepos({ language, days = 7 }) {
   const daysAgo = moment()
-    .subtract(days, 'days')
+    .subtract(days + 1, 'days')
     .format('YYYY-MM-DD')
   const options = {
     method: 'GET',
@@ -80,7 +80,7 @@ async function githubRepos({ language, days = 30 }) {
   })
 }
 
-async function githubTrending({ since = 'monthly' }) {
+async function githubTrending({ since = 'weekly' }) {
   const options = {
     method: 'GET',
     body: {
