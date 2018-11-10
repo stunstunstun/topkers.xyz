@@ -16,7 +16,7 @@ describe('Posts', () => {
 
   test('Get resources by Devblog', async () => {
     expect.hasAssertions()
-    const posts = await devblogs({ source: SOURCE.DEVBLOGS_TEAM, size })
+    const posts = await devblogs({ source: SOURCE.BLOG_TEAM, size })
     const [post] = posts
     expect(posts.length).toBe(size)
     expect(post instanceof Post).toBeTruthy()

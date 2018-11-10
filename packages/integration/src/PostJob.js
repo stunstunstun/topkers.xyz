@@ -15,8 +15,8 @@ module.exports = async () => {
       reddit({ since: 'week', size }),
       githubRepos({ language: 'javascript' }),
       githubTrending({ since: 'weekly' }),
-      devblogs({ source: SOURCE.DEVBLOGS_PERSONAL, size }),
-      devblogs({ source: SOURCE.DEVBLOGS_TEAM, size }),
+      devblogs({ source: SOURCE.BLOG_PERSONAL, size }),
+      devblogs({ source: SOURCE.BLOG_TEAM, size }),
     ]),
   )
   const results = await Post.insertMany(posts)

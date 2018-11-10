@@ -2,7 +2,7 @@ const request = require('supertest')
 const { closeDatabase } = require('@githubjobs/domain')
 const server = require('./environments/server')
 
-describe('Integration Testing with Users', () => {
+describe('User', () => {
   let token
   afterAll(async () => {
     closeDatabase()

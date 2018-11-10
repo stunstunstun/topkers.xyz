@@ -1,5 +1,8 @@
 const { schemaComposer } = require('graphql-compose')
 
 require('./user')
+require('./post')
 
-module.exports = schemaComposer.buildSchema()
+const graphqlSchema = schemaComposer.buildSchema()
+
+module.exports = graphqlSchema

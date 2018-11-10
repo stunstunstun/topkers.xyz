@@ -14,6 +14,8 @@ class App {
       context,
       introspection: true,
       playground: true,
+      debug: true,
+      tracing: true,
     })
     this.koaApp = new Koa()
     this.middlewares()
@@ -22,9 +24,7 @@ class App {
   middlewares() {
     this.apolloServer.applyMiddleware({ app: this.koaApp })
     this.koaApp.use(jwt({ secret: config.jwtSecretKey })).use(bodyParserGraphQL())
-    if (config.isDev()) {
-      this.koaApp.use(koaMorgan('combined'))
-    }
+    this.koaApp.use(koaMorgan('combined'))
   }
 }
 

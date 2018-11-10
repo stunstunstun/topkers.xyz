@@ -132,7 +132,7 @@ async function devblogs({ source, page = 0, size = 10 }) {
     },
   }
   const { personal, team } = config.api.devblogs
-  const response = await request(source === SOURCE.DEVBLOGS_PERSONAL ? personal : team, options)
+  const response = await request(source === SOURCE.BLOG_PERSONAL ? personal : team, options)
   const res = await response.json()
   return res.map(item => {
     const { _id, title, link, description, author, imgUrl } = item

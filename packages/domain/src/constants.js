@@ -7,8 +7,8 @@ const SOURCE = Object.freeze({
   REDDIT: 0,
   GITHUB_REPOS: 1,
   GITHUB_TRENDING: 2,
-  DEVBLOGS_PERSONAL: 3,
-  DEVBLOGS_TEAM: 4,
+  BLOG_PERSONAL: 3,
+  BLOG_TEAM: 4,
 })
 
 module.exports = {

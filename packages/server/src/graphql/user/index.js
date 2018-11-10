@@ -1,16 +1,16 @@
 const { schemaComposer, EnumTypeComposer } = require('graphql-compose')
 const { composeWithMongoose } = require('graphql-compose-mongoose')
 const { AuthenticationError } = require('apollo-server')
-const { SERVICE_TYPE, User } = require('@githubjobs/domain')
-const { createConsumer } = require('src/service/user')
+const { User, SERVICE_TYPE } = require('@githubjobs/domain')
+const { createConsumer } = require('./user.service')
 
-const typeComposer = composeWithMongoose(User, {})
+const userTypeComposer = composeWithMongoose(User, {})
 
-EnumTypeComposer.create(`enum OAuthProvider { ${Object.keys(SERVICE_TYPE).join(', ')} }`)
+EnumTypeComposer.create(`enum OAuthProvider { ${Object.keys(SERVICE_TYPE).join(',')} }`)
 
-typeComposer.addResolver({
+userTypeComposer.addResolver({
   name: 'me',
-  type: 'User',
+  type: userTypeComposer,
   resolve: async ({ context }) => {
     const { user } = context
     if (!user) {
@@ -20,20 +20,18 @@ typeComposer.addResolver({
   },
 })
 
-typeComposer.addResolver({
+userTypeComposer.addResolver({
   name: 'signup',
-  type: 'User',
+  type: userTypeComposer,
   args: { type: 'OAuthProvider', token: 'String' },
   resolve: async ({ args: { type, token } }) => createConsumer(type).signup(token),
 })
 
 schemaComposer.Query.addFields({
-  me: typeComposer.get('$me'),
+  me: userTypeComposer.getResolver('me'),
 })
 
 schemaComposer.Mutation.addFields({
-  signup: typeComposer.get('$signup'),
-  updateById: typeComposer.getResolver('updateById'),
+  signup: userTypeComposer.getResolver('signup'),
+  updateById: userTypeComposer.getResolver('updateById'),
 })
-
-module.exports = {}

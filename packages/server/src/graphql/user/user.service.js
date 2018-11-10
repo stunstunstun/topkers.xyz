@@ -1,6 +1,6 @@
 const { SERVICE_TYPE } = require('@githubjobs/domain')
-const GitHubConsumer = require('../GitHubConsumer')
-const EmailConsumer = require('../EmailConsumer')
+const GitHubConsumer = require('src/service/GitHubConsumer')
+const EmailConsumer = require('src/service/EmailConsumer')
 
 const createConsumer = serviceType => {
   switch (SERVICE_TYPE[serviceType]) {
