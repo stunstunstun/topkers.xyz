@@ -1,26 +1,45 @@
 import React from 'react'
+import { ApolloProvider } from 'react-apollo'
 import App, { Container } from 'next/app'
 import Head from 'next/head'
+import { parseCookies } from 'nookies'
+import { withApollo, withSession as WithSession } from '../libs'
+import { Header, Footer } from '../components'
 
-export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
+    let isLoggedIn = false
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
-    return { pageProps }
+    const cookies = parseCookies(ctx)
+    if (cookies['X-JWT'] !== null && cookies['X-JWT'] !== undefined) {
+      isLoggedIn = true
+    }
+    return { pageProps, isLoggedIn }
   }
 
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, apollo, isLoggedIn } = this.props
     return (
       <Container>
-        <Head>
-          <title>GitHub Jobs Korea</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
-        <Component {...pageProps} />
+        <ApolloProvider client={apollo}>
+          <Head>
+            <title>GitHub Jobs Korea</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          </Head>
+          <Header />
+          <main>
+            <WithSession isLoggedIn={isLoggedIn}>
+              <Component {...pageProps} isLoggedIn={isLoggedIn} />
+            </WithSession>
+          </main>
+          <Footer />
+        </ApolloProvider>
       </Container>
     )
   }
 }
+
+export default withApollo(MyApp)
