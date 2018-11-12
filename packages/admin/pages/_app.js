@@ -3,7 +3,7 @@ import { ApolloProvider } from 'react-apollo'
 import App, { Container } from 'next/app'
 import Head from 'next/head'
 import { parseCookies } from 'nookies'
-import { withApollo, withSession as WithSession } from '../libs'
+import { withApollo } from '../libs'
 import { Header, Footer } from '../components'
 
 class MyApp extends App {
@@ -29,13 +29,15 @@ class MyApp extends App {
             <title>GitHub Jobs Korea</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
-          <Header />
+          <header>
+            <Header />
+          </header>
           <main>
-            <WithSession isLoggedIn={isLoggedIn}>
-              <Component {...pageProps} isLoggedIn={isLoggedIn} />
-            </WithSession>
+            <Component {...pageProps} isLoggedIn={isLoggedIn} />
           </main>
-          <Footer />
+          <footer>
+            <Footer />
+          </footer>
         </ApolloProvider>
       </Container>
     )

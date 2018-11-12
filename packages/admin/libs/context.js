@@ -1,7 +1,7 @@
 import React from 'react'
 
 const store = {
-  session: null,
+  session: {},
 }
 
 export const { Provider, Consumer } = React.createContext(store)

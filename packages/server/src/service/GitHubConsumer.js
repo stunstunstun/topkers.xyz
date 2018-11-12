@@ -15,12 +15,16 @@ class GitHubConsumer extends OAuthConsumer {
         code,
       },
     }).json
-    const { error, access_token } = token
+    const { error, access_token, scope } = token
     if (error) {
       throw new AuthenticationError(`Opps! Unauthorized token with ${error}`)
     }
     const user = await request.get(`https://api.github.com/user?access_token=${access_token}`).json
-    return this.upsertUser(user)
+    return this.upsertUser({
+      accessToken: access_token,
+      scope,
+      ...user,
+    })
   }
 }
 
