@@ -3,6 +3,7 @@
 .vscode/
 .cache/
 .next/
+config/.env.production
 node_modules/
 build/
 coverage/
