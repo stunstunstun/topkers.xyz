@@ -11,6 +11,7 @@ const Title = styled.h1`
 class App extends React.Component {
   static propTypes = {
     code: PropTypes.string,
+    onLogin: PropTypes.func.isRequired,
   }
 
   static async getInitialProps({ query }) {
@@ -23,16 +24,15 @@ class App extends React.Component {
   }
 
   render() {
-    const { code } = this.props
+    const { code, onLogin } = this.props
     return (
-      <Mutation mutation={SIGN_UP} variables={{ code }}>
-        {(signup, { data, loading }) => {
+      <Mutation mutation={SIGN_UP} variables={{ code }} onCompleted={onLogin}>
+        {(signup, { loading }) => {
           this.signup = signup
           if (loading) return <p>Loading...</p>
           return (
             <>
               <Title>Hello World!</Title>
-              {data && <p>{data.signup.userInfo.name}</p>}
             </>
           )
         }}

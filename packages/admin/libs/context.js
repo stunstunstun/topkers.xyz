@@ -1,7 +1,8 @@
 import React from 'react'
 
 const store = {
-  session: {},
+  onLogin: () => {},
+  session: null,
 }
 
 export const { Provider, Consumer } = React.createContext(store)
