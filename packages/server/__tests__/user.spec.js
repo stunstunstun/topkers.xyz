@@ -12,7 +12,7 @@ describe('User', () => {
     test('Signup', async () => {
       const query = `
         mutation {
-          signup(type:EMAIL, token: "wjdsupj@gmail.com") {
+          signup(type:EMAIL, code: "wjdsupj@gmail.com") {
             token
           }
         }

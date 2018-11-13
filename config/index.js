@@ -3,10 +3,12 @@ const path = require('path')
 
 const defaultPhase = 'development'
 const phase = process.env.NODE_ENV || defaultPhase
-const envFileName = phase === defaultPhase ? '.env' : `.env.${phase}`
-require('dotenv').config({
-  path: path.join(path.normalize(__dirname), envFileName),
-})
+if (phase !== 'production') {
+  const envFileName = phase === defaultPhase ? '.env' : `.env.${phase}`
+  require('dotenv').config({
+    path: path.join(path.normalize(__dirname), envFileName),
+  })
+}
 
 const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string()

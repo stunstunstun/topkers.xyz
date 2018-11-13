@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import styled from 'styled-components'
-import 'isomorphic-unfetch'
+import { Mutation } from 'react-apollo'
+import { SIGN_UP } from '../mutations'
 
 const Title = styled.h1`
   color: red;
@@ -10,29 +10,33 @@ const Title = styled.h1`
 `
 class App extends React.Component {
   static propTypes = {
-    stars: PropTypes.number.isRequired,
-    userAgent: PropTypes.string.isRequired,
+    code: PropTypes.string,
+    onLogin: PropTypes.func.isRequired,
   }
 
-  static async getInitialProps({ req }) {
-    const { headers } = req
-    const userAgent = headers['user-agent']
-    const res = await fetch('https://api.github.com/repos/zeit/next.js')
-    const { stargazers_count } = await res.json()
-    return { stars: stargazers_count, userAgent }
+  static async getInitialProps({ query }) {
+    return { ...query }
+  }
+
+  componentDidMount() {
+    const { code } = this.props
+    if (code) this.signup()
   }
 
   render() {
+    const { code, onLogin } = this.props
     return (
-      <>
-        <Title>Next.js has {this.props.stars} ⭐️</Title>
-        Click{' '}
-        <Link prefetch href="/about">
-          <a>About</a>
-        </Link>{' '}
-        To read more
-        <p>{this.props.userAgent}</p>
-      </>
+      <Mutation mutation={SIGN_UP} variables={{ code }} onCompleted={onLogin}>
+        {(signup, { loading }) => {
+          this.signup = signup
+          if (loading) return <p>Loading...</p>
+          return (
+            <>
+              <Title>Hello World!</Title>
+            </>
+          )
+        }}
+      </Mutation>
     )
   }
 }

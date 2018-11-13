@@ -23,8 +23,8 @@ userTypeComposer.addResolver({
 userTypeComposer.addResolver({
   name: 'signup',
   type: userTypeComposer,
-  args: { type: 'OAuthProvider', token: 'String' },
-  resolve: async ({ args: { type, token } }) => createConsumer(type).signup(token),
+  args: { type: 'OAuthProvider', code: 'String' },
+  resolve: async ({ args: { type, code } }) => createConsumer(type).signup(code),
 })
 
 schemaComposer.Query.addFields({
