@@ -1,5 +1,5 @@
 const request = require('supertest')
-const { closeDatabase } = require('@githubjobs/domain')
+const { closeDatabase } = require('@hashtags/domain')
 const server = require('./environments/server')
 
 describe('User', () => {

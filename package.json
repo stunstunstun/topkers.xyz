@@ -1,5 +1,5 @@
 {
-  "name": "githubjobs",
+  "name": "hashtags",
   "private": true,
   "description": "💬 Talk is cheap, show me the your code 🔍 when u get a job!",
   "scripts": {
@@ -8,20 +8,20 @@
     "build": "lerna run build --parallel",
     "lint": "lerna run lint --parallel",
     "dev": "lerna run dev --parallel",
-    "test": "lerna run test --ignore @githubjobs/app --parallel",
+    "test": "lerna run test --ignore @hashtags/app --parallel",
     "test:coverage": "lerna run coverage --parallel",
     "coverage": "run-s lint test:coverage",
     "lerna": "lerna",
     "precommit": "lint-staged",
-    "start": "lerna run --scope @githubjobs/server start --stream",
+    "start": "lerna run --scope @hashtags/server start --stream",
     "deploy": "run-s build deploy:app deploy:server",
-    "deploy:app": "lerna run --scope @githubjobs/app deploy --stream",
+    "deploy:app": "lerna run --scope @hashtags/app deploy --stream",
     "deploy:server": "git push heroku HEAD:master && heroku ps:scale web=1 && heroku open && heroku logs --tail 2> /dev/null"
   },
   "dependencies": {
-    "@githubjobs/config": "^1.0.0",
-    "@githubjobs/domain": "^1.0.0",
-    "@githubjobs/integration": "^1.0.0",
+    "@hashtags/config": "^1.0.0",
+    "@hashtags/domain": "^1.0.0",
+    "@hashtags/integration": "^1.0.0",
     "lerna": "^3.4.3"
   },
   "devDependencies": {
@@ -71,7 +71,7 @@
       "git add"
     ]
   },
-  "homepage": "https://www.githubjobs.xyz/",
-  "repository": "https://github.com/stunstunstun/githubjobs",
+  "homepage": "https://www.hashtags.tech/",
+  "repository": "https://github.com/stunstunstun/hashtags.tech",
   "license": "MIT"
 }

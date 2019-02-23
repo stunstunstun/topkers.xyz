@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { SERVICE_TYPE, User } = require('@githubjobs/domain')
-const config = require('@githubjobs/config')
+const { SERVICE_TYPE, User } = require('@hashtags/domain')
+const config = require('@hashtags/config')
 
 class OAuthConsumer {
   constructor(serviceType) {

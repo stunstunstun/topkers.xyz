@@ -1,5 +1,5 @@
 {
-  "name": "@githubjobs/admin",
+  "name": "@hashtags/admin",
   "version": "1.0.0",
   "scripts": {
     "dev": "NODE_ENV=development PORT=10000 node server.js",

@@ -1,6 +1,6 @@
 const { schemaComposer, EnumTypeComposer } = require('graphql-compose')
 const { composeWithMongoose } = require('graphql-compose-mongoose')
-const { Post, SOURCE } = require('@githubjobs/domain')
+const { Post, SOURCE } = require('@hashtags/domain')
 
 const defaultSource = SOURCE.BLOG_PERSONAL
 const postTypeComposer = composeWithMongoose(Post, {})

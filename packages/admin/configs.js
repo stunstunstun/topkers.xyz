@@ -8,10 +8,10 @@ const env = {
   },
   production: {
     COOKIE_NAME: 'gjs',
-    DOMAIN: 'githubjobs.now.sh',
-    HOME: 'https://githubjobs.now.sh',
+    DOMAIN: 'hashtags.now.sh',
+    HOME: 'https://hashtags.now.sh',
     CLIENT_ID: 'f019324be3bbc0bf8f53',
-    GRAPHQL_ENDPOINT: 'https://githubjobs.herokuapp.com/graphql',
+    GRAPHQL_ENDPOINT: 'https://hashtags.herokuapp.com/graphql',
   },
 }
 

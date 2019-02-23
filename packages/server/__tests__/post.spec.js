@@ -1,5 +1,5 @@
 const request = require('supertest')
-const { closeDatabase } = require('@githubjobs/domain')
+const { closeDatabase } = require('@hashtags/domain')
 const { defaultSource } = require('src/graphql/post')
 const server = require('./environments/server')
 

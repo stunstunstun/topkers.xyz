@@ -3,7 +3,7 @@ const jwt = require('koa-jwt')
 const { bodyParserGraphQL } = require('body-parser-graphql')
 const koaMorgan = require('koa-morgan')
 const { ApolloServer } = require('apollo-server-koa')
-const config = require('@githubjobs/config')
+const config = require('@hashtags/config')
 const schema = require('src/graphql')
 const context = require('src/context')
 

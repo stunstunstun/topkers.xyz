@@ -1,4 +1,4 @@
-const { SERVICE_TYPE } = require('@githubjobs/domain')
+const { SERVICE_TYPE } = require('@hashtags/domain')
 const GitHubConsumer = require('src/service/GitHubConsumer')
 const EmailConsumer = require('src/service/EmailConsumer')
 

@@ -1,5 +1,5 @@
-const { connectDatabase } = require('@githubjobs/domain')
-const config = require('@githubjobs/config')
+const { connectDatabase } = require('@hashtags/domain')
+const config = require('@hashtags/config')
 const logger = require('src/logger')
 const app = require('./app')
 

@@ -1,4 +1,4 @@
-const { SOURCE } = require('@githubjobs/domain')
+const { SOURCE } = require('@hashtags/domain')
 const { Post } = require('../src/index')
 const { reddit, devblogs, githubRepos, githubTrending } = require('../src/services')
 

@@ -1,7 +1,7 @@
 const { schemaComposer, EnumTypeComposer } = require('graphql-compose')
 const { composeWithMongoose } = require('graphql-compose-mongoose')
 const { AuthenticationError } = require('apollo-server')
-const { User, SERVICE_TYPE } = require('@githubjobs/domain')
+const { User, SERVICE_TYPE } = require('@hashtags/domain')
 const { createConsumer } = require('./user.service')
 
 const userTypeComposer = composeWithMongoose(User, {})

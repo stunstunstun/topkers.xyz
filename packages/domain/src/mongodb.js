@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const config = require('@githubjobs/config')
+const config = require('@hashtags/config')
 const logger = require('./logger')
 
 const connection = mongoose.connection
@@ -16,10 +16,7 @@ mongoose.set('debug', config.mongooseDebug)
 
 const connectDatabase = async (options = { keepAlive: 1, useNewUrlParser: true }) => {
   logger.info(config.mongoUri)
-  return mongoose.connect(
-    config.mongoUri,
-    options,
-  )
+  return mongoose.connect(config.mongoUri, options)
 }
 
 const closeDatabase = async () => {

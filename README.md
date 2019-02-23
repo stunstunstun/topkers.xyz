@@ -44,7 +44,7 @@ In the project root as follows are performed through the `.nvmrc`
 
 ```
 $ nvm use
-Found '/Users/user/Github/blahblah.tech/.nvmrc' with version <10.13.0>
+Found '/Users/user/Github/hashtags.tech/.nvmrc' with version <10.15.1>
 ```
 
 ### Yarn CLIs
@@ -77,9 +77,9 @@ $ yarn dev
 
 packages | localhost | environments as production
 ---|---|---
-server | http://localhost:10080 | https://githubjobs.herokuapp.com/graphql
-app | http://localhost:10001 | https://www.githubjobs.xyz/
-admin | http://localhost:10000 | https://githubjobs.now.sh/
+server | http://localhost:10080 | https://hashtags.herokuapp.com/graphql
+app | http://localhost:10001 | https://www.hashtags.tech/
+admin | http://localhost:10000 | https://hashtags.now.sh/
 
 ## References
 
@@ -95,7 +95,7 @@ The repository is collecting data through the links below. Thank you!
 MIT
 ```
 
-[build-status-badge]: https://travis-ci.org/stunstunstun/githubjobs.svg?branch=develop
-[build-status-link]: https://travis-ci.org/stunstunstun/githubjobs
-[codecov-badge]: https://codecov.io/gh/stunstunstun/githubjobs/branch/develop/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/stunstunstun/githubjobs
+[build-status-badge]: https://travis-ci.org/stunstunstun/hashtags.tech.svg?branch=develop
+[build-status-link]: https://travis-ci.org/stunstunstun/hashtags.tech
+[codecov-badge]: https://codecov.io/gh/stunstunstun/hashtags.tech/branch/develop/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/stunstunstun/hashtags.tech

@@ -1,4 +1,4 @@
-const { connectDatabase, closeDatabase, SOURCE, Post } = require('@githubjobs/domain')
+const { connectDatabase, closeDatabase, SOURCE, Post } = require('@hashtags/domain')
 const { reddit, githubRepos, githubTrending, devblogs } = require('./services')
 const logger = require('./logger')
 

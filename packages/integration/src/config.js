@@ -6,8 +6,8 @@ module.exports = {
       trending: 'https://github.com/trending',
     },
     devblogs: {
-      personal: 'https://awesome-devblog.now.sh/feeds/domestic',
-      team: 'https://awesome-devblog.now.sh/feeds/team',
+      personal: 'https://awesome-devblog.now.sh/domestic',
+      team: 'https://awesome-devblog.now.sh/team',
     },
   },
 }

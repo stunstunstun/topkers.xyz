@@ -1,5 +1,5 @@
 {
-  "name": "@githubjobs/app",
+  "name": "@hashtags/app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -23,7 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://www.githubjobs.xyz/",
+  "homepage": "https://www.hashtags.tech/",
   "browserslist": [
     ">0.2%",
     "not dead",

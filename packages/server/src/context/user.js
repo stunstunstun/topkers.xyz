@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { User } = require('@githubjobs/domain')
-const config = require('@githubjobs/config')
+const { User } = require('@hashtags/domain')
+const config = require('@hashtags/config')
 const logger = require('src/logger')
 
 const TOKEN_TYPE = 'Bearer'

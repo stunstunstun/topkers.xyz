@@ -1,7 +1,7 @@
 const fetch = require('isomorphic-fetch')
 const cheerio = require('cheerio')
 const moment = require('moment')
-const { SOURCE } = require('@githubjobs/domain')
+const { SOURCE } = require('@hashtags/domain')
 const Post = require('./Post')
 const config = require('./config')
 
@@ -133,8 +133,8 @@ async function devblogs({ source, page = 0, size = 10 }) {
   }
   const { personal, team } = config.api.devblogs
   const response = await request(source === SOURCE.BLOG_PERSONAL ? personal : team, options)
-  const res = await response.json()
-  return res.map(item => {
+  const { body } = await response.json()
+  return body.map(item => {
     const { _id, title, link, description, author, imgUrl } = item
     return new Post({
       id: _id,
